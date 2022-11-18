@@ -20,6 +20,8 @@
     <string name="blood_type">Blood type</string>
     <string name="select_a_picture">Select a picture</string>
     <string name="camera_img_description">Image boutton pour la selection d\'une image</string>
+
+    <!-- profile part -->
     <string name="user_name">Sara Chakir</string>
     <string name="img_profile_desc">image correspondant au profil de l\'utilisateur</string>
     <string name="img_cells">TODO</string>
@@ -30,7 +32,9 @@
     <string name="profile_blood_group">A+</string>
     <string name="profile_email">fredericfaya@gmail.com</string>
 
-    <!-- profile part -->
+    <!-- donor_list part -->
+    <string name="icon">icon</string>
+    <string name="donors_list">Donors List</string>
 
     <string-array name="bloodGroups">
         <item>Groupe</item>
