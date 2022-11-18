@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">MINI PROJET APPLICATION MOBILE (BLOOD DONATION)</string>
+    <string name="loading">Loader of the splash page</string>
+    <string name="login_text">login</string>
+    <string name="signUp_text">signUp</string>
+    <string name="app_title">App Title</string>
+    <string name="logo_heart">logo of the application</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="reset_pwd">forgot password ?</string>
+    <string name="firstName">firstName</string>
+    <string name="lastName">lastName</string>
+    <string name="email">email</string>
+    <string name="phone">phone number</string>
+    <string name="address">address</string>
+    <string name="radio_text_1">Male</string>
+    <string name="radio_text_2">Female</string>
+    <string name="check_box_1">I want to be a donor</string>
+    <string name="gender">Gender</string>
+    <string name="blood_type">Blood type</string>
+    <string name="select_a_picture">Select a picture</string>
+    <string name="camera_img_description">Image boutton pour la selection d\'une image</string>
+
+    <string-array name="bloodGroups">
+        <item>Groupe</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+    </string-array>
+
+</resources>
