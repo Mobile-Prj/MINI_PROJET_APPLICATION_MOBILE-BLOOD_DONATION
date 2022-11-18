@@ -20,6 +20,17 @@
     <string name="blood_type">Blood type</string>
     <string name="select_a_picture">Select a picture</string>
     <string name="camera_img_description">Image boutton pour la selection d\'une image</string>
+    <string name="user_name">Sara Chakir</string>
+    <string name="img_profile_desc">image correspondant au profil de l\'utilisateur</string>
+    <string name="img_cells">TODO</string>
+    <string name="edit_text">edit</string>
+    <string name="profile_phone_number">+212638743853</string>
+    <string name="profile_address">Abwab gueliz, Marrakech, Maroc</string>
+    <string name="profile_gender">female</string>
+    <string name="profile_blood_group">A+</string>
+    <string name="profile_email">fredericfaya@gmail.com</string>
+
+    <!-- profile part -->
 
     <string-array name="bloodGroups">
         <item>Groupe</item>
