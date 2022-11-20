@@ -7,8 +7,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -123,7 +125,8 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
                 break;
             }
             case R.id.deconnection: {
-                Toast.makeText(CoreAppActivity.this, "Page deconnection", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
                 break;
             }
         }
