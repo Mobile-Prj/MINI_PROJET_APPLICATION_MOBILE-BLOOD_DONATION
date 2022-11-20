@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorDark"
+    tools:context=".Activities.FormActivity">
+
+    <include
+        layout="@layout/toolbar_app"/>
+
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/back_form"
+        android:layout_below="@id/toolbar"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+            <TextView
+                android:id="@+id/tvMountain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add a Request"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:textSize="33sp"
+                android:typeface="monospace"
+                android:textStyle="bold"
+                android:textColor="@color/black"/>
+
+
+            <EditText
+                android:id="@+id/Contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvMountain"
+                android:hint="Contact"
+                android:textColorHint="@color/white"
+                android:paddingLeft="25dp"
+                android:paddingTop="15dp"
+                android:textSize="14dp"
+                android:paddingBottom="15dp"
+                android:layout_marginTop="70dp"
+                android:inputType="text"
+                android:background="@drawable/panel"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"/>
+            <EditText
+                android:id="@+id/Location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/Contact"
+                android:hint="Location"
+                android:textColorHint="@color/white"
+                android:paddingLeft="25dp"
+                android:paddingTop="15dp"
+                android:textSize="14dp"
+                android:paddingBottom="15dp"
+                android:layout_marginTop="20dp"
+                android:inputType="text"
+                android:background="@drawable/panel"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"/>
+
+            <LinearLayout
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:orientation="horizontal"
+                android:layout_below="@+id/Location"
+                android:id="@+id/BloodCateg"
+                android:background="@drawable/panel"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:textColorHint="@color/white"
+                android:paddingLeft="25dp"
+                android:paddingTop="15dp"
+                android:textSize="14dp"
+                android:paddingBottom="15dp"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:text="@string/blood_type"
+                    android:textColor="#FFFFFF"
+                    android:textColorHint="@color/white" />
+
+                <Spinner
+                    android:id="@+id/SpinnerBlood"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/bloodGroups"
+                    android:inputType="text"
+                    android:padding="5dp" />
+            </LinearLayout>
+
+
+
+            <Button
+                android:id="@+id/postbtn"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/primary_color"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/BloodCateg"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:textAllCaps="false"
+                android:text="Submit"
+                tools:ignore="NotSibling" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

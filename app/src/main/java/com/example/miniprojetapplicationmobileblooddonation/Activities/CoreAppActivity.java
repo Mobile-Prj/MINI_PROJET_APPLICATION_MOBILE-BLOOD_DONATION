@@ -47,7 +47,7 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
         setTitle(R.string.home);
         setContentView(R.layout.activity_core_app);
 
-        replaceFragment(new DonorsListFragment());
+        //replaceFragment(new DonorsListFragment());
 
         // definir le toolbar
         Toolbar toolbar = findViewById(R.id.myToolbar);
@@ -102,27 +102,23 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
             // en fonction de l'item selectionne sur le menu on effectue une action
             // les id sont les meme utilses pour les referencer dans la liste menu dans main_menu.xml
             case R.id.menu_home: {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new HomeFragment()).commit();
+                replaceFragment(new HomeFragment());
                 // on change le title de l'activite qui contient les fragments
                 setTitle(R.string.home);
                 break;
             }
             case R.id.profile: {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ProfileFragment()).commit();
+                replaceFragment(new ProfileFragment());
                 setTitle(R.string.profile);
                 break;
             }
             case R.id.donorList: {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new DonorsListFragment()).commit();
+                replaceFragment(new DonorsListFragment());
                 setTitle(R.string.donors_list);
                 break;
             }
             case R.id.demanderList: {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new DemandersListFragment()).commit();
+                replaceFragment(new DemandersListFragment());
                 setTitle(R.string.demanders_list);
                 break;
             }

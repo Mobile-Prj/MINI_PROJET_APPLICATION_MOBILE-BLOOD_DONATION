@@ -11,4 +11,5 @@
     <color name="intermediate">#90F81313</color>
     <color name="hint_color">#B6A7A7</color>
     <color name="radio_blue">#0C80FD</color>
+    <color name="colorDark">#3A3E41</color>
 </resources>

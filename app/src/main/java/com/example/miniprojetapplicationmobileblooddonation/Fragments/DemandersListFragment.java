@@ -6,13 +6,16 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.miniprojetapplicationmobileblooddonation.Activities.FormActivity;
 import com.example.miniprojetapplicationmobileblooddonation.Adapters.DemandersAdapter;
 import com.example.miniprojetapplicationmobileblooddonation.Models.DemanderItem;
 import com.example.miniprojetapplicationmobileblooddonation.R;
@@ -23,16 +26,23 @@ import java.util.List;
 
 public class DemandersListFragment extends Fragment {
 
-    FloatingActionButton mAddFab;
+    private FloatingActionButton floatingButton;
     private List<DemanderItem> items;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        /*View rootView = inflater.inflate(R.layout.fragment_donors_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_demanders_list, container, false);
+        floatingButton = (FloatingActionButton) view.findViewById(R.id.add_fab);
 
-         */
-        return inflater.inflate(R.layout.fragment_demanders_list, container, false);
+        floatingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FormActivity.class);
+                startActivity(intent);
+            }
+        });
+        return view;
     }
 
     @SuppressLint("NotifyDataSetChanged")
