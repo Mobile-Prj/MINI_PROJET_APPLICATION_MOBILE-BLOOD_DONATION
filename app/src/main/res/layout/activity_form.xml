@@ -24,17 +24,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center">
+
             <TextView
                 android:id="@+id/tvMountain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add a Request"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="50dp"
+                android:text="Add a Request"
+                android:textColor="@color/black"
                 android:textSize="33sp"
-                android:typeface="monospace"
                 android:textStyle="bold"
-                android:textColor="@color/black"/>
+                android:typeface="monospace" />
 
 
             <EditText
@@ -106,20 +107,22 @@
             </LinearLayout>
 
 
-
             <Button
                 android:id="@+id/postbtn"
-                android:layout_gravity="center"
-                android:backgroundTint="@color/primary_color"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:layout_width="200dp"
+                android:layout_width="180dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/BloodCateg"
-                android:layout_marginTop="20dp"
                 android:layout_centerHorizontal="true"
-                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:height="60dp"
+                android:backgroundTint="@color/primary_color"
+                android:gravity="center"
                 android:text="Submit"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:cornerRadius="20dp"
                 tools:ignore="NotSibling" />
 
 
