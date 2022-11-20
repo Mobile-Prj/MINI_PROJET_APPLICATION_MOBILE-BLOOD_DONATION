@@ -3,18 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
+        <item android:id="@+id/menu_home"
+            android:icon="@drawable/house"
+            android:title="Home"/>
         <item android:id="@+id/profile"
             android:icon="@drawable/man"
             android:title="Profile"/>
         <item android:id="@+id/donorList"
             android:icon="@drawable/donor"
-            android:title="Donor List"/>
+            android:title="Donors List"/>
         <item android:id="@+id/demanderList"
             android:icon="@drawable/receiver"
             android:title="Demanders List"/>
         <item android:id="@+id/deconnection"
             android:icon="@drawable/exit"
-            android:title="Deconnection"/>
+            android:title="logout"/>
     </group>
 
 </menu>

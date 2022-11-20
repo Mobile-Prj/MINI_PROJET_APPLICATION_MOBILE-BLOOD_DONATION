@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/recyclerview"
         android:layout_below="@id/toolbar"
-        tools:listitem="@layout/list_layout"/>
+        tools:listitem="@layout/list_layout"
+        tools:ignore="NotSibling" />
 
 </RelativeLayout>

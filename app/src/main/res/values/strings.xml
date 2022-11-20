@@ -41,6 +41,8 @@
     <string name="close">Close Navigation Drawer</string>
     <string name="profile">Profile</string>
     <string name="demanders_list">Demanders List</string>
+    <string name="home">Home</string>
+    <string name="floating_button">button for lauching request form</string>
 
     <string-array name="bloodGroups">
         <item>Groupe</item>

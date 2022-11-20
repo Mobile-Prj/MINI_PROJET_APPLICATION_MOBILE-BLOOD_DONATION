@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginTop="12dp"
+    android:background="@drawable/item_background_shape"
+    android:padding="10dp"
+    >
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/ImageView"
+        android:layout_marginRight="18dp"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/BloodCat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/ImageView"
+        android:text="Needs AB+"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Phone"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@id/ImageView"
+        android:layout_below="@id/BloodCat"
+        android:text="Contact"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Fname"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@id/ImageView"
+        android:layout_below="@id/Phone"
+        android:text="Name"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/DateTime"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@id/ImageView"
+        android:layout_below="@id/Fname"
+        android:text="Posted On"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/Address"
+        android:textColor="@color/black"
+        android:layout_toEndOf="@id/ImageView"
+        android:layout_below="@id/DateTime"
+        android:text="Address"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/Address"
+        android:layout_marginTop="2dp"
+        android:background="#DAD8D8" />
+
+</RelativeLayout>

@@ -1,7 +1,6 @@
 package com.example.miniprojetapplicationmobileblooddonation.Activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -16,7 +15,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.miniprojetapplicationmobileblooddonation.Fragments.DemandersListFragment;
 import com.example.miniprojetapplicationmobileblooddonation.Fragments.DonorsListFragment;
+import com.example.miniprojetapplicationmobileblooddonation.Fragments.HomeFragment;
 import com.example.miniprojetapplicationmobileblooddonation.Fragments.ProfileFragment;
 import com.example.miniprojetapplicationmobileblooddonation.R;
 import com.google.android.material.navigation.NavigationView;
@@ -43,11 +44,12 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle(R.string.profile);
+        setTitle(R.string.home);
         setContentView(R.layout.activity_core_app);
 
         replaceFragment(new DonorsListFragment());
 
+        // definir le toolbar
         Toolbar toolbar = findViewById(R.id.myToolbar);
         setSupportActionBar(toolbar);
 
@@ -65,8 +67,8 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
         if (savedInstanceState == null){
             // condition pour savoir si c'est la premiere fois que la page est creer ou pas
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new ProfileFragment()).commit();
-            navigationView.setCheckedItem(R.id.profile);
+                    new HomeFragment()).commit();
+            navigationView.setCheckedItem(R.id.menu_home);
         }
 
 
@@ -99,10 +101,16 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
         switch (item.getItemId()) {
             // en fonction de l'item selectionne sur le menu on effectue une action
             // les id sont les meme utilses pour les referencer dans la liste menu dans main_menu.xml
+            case R.id.menu_home: {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new HomeFragment()).commit();
+                // on change le title de l'activite qui contient les fragments
+                setTitle(R.string.home);
+                break;
+            }
             case R.id.profile: {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ProfileFragment()).commit();
-                // on change le title de l'activite qui contient les fragments
                 setTitle(R.string.profile);
                 break;
             }
@@ -113,8 +121,9 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
                 break;
             }
             case R.id.demanderList: {
-                //setTitle(R.string.demanders_list);
-                Toast.makeText(CoreAppActivity.this, "Page demanders list", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new DemandersListFragment()).commit();
+                setTitle(R.string.demanders_list);
                 break;
             }
             case R.id.deconnection: {
