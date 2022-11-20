@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/menu_header_linear_bgd"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="20dp">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/image_profile"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_profile"
+        app:riv_oval="true" />
+
+    <View
+        android:id="@+id/view_supporter"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        />
+
+    <TextView
+        android:layout_width="184dp"
+        android:layout_height="28dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:text="frederic FAYA"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+
+    <!--TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FAYA Frederic"
+        android:textColor="@color/radio_blue"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="fredericfaya@gmail.com"
+        android:textColor="@color/radio_blue"
+        android:textSize="12dp"
+        android:textStyle="bold"/-->
+
+
+</LinearLayout>

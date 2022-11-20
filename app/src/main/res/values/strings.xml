@@ -36,6 +36,10 @@
     <string name="icon">icon</string>
     <string name="donors_list">Donors List</string>
 
+    <!-- drawer part -->
+    <string name="open">Open Navigation Drawer</string>
+    <string name="close">Close Navigation Drawer</string>
+
     <string-array name="bloodGroups">
         <item>Groupe</item>
         <item>A+</item>
