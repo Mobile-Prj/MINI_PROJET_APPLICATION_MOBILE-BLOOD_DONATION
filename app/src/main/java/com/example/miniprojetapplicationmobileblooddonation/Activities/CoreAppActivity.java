@@ -51,7 +51,7 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        //navigationView.setItemIconTintList(null);
+        navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
 
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.open, R.string.close);

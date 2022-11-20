@@ -4,16 +4,16 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item android:id="@+id/profile"
-            android:icon="@drawable/ic_baseline_person_24"
+            android:icon="@drawable/man"
             android:title="Profile"/>
         <item android:id="@+id/donorList"
-            android:icon="@drawable/ic_baseline_people_alt_24"
+            android:icon="@drawable/donor"
             android:title="Donor List"/>
         <item android:id="@+id/demanderList"
-            android:icon="@drawable/ic_baseline_transfer_within_a_station_24"
+            android:icon="@drawable/receiver"
             android:title="Demander List"/>
         <item android:id="@+id/deconnection"
-            android:icon="@drawable/ic_baseline_exit_to_app_24"
+            android:icon="@drawable/exit"
             android:title="Deconnection"/>
     </group>
 
