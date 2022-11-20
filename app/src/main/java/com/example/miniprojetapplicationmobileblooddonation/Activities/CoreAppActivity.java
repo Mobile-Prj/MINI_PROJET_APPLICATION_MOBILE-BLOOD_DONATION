@@ -70,6 +70,7 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
 
     }
 
+
     private void replaceFragment(Fragment fragment) {
 
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -81,6 +82,7 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
 
     @Override
     public void onBackPressed() {
+        // on teste si le drawer est deja ouvert alors on le ferme
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
@@ -93,6 +95,8 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+            // en fonction de l'item selectionne sur le menu on effectue une action
+            // les id sont les meme utilses pour les referencer dans la liste menu dans main_menu.xml
             case R.id.profile: {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ProfileFragment()).commit();
