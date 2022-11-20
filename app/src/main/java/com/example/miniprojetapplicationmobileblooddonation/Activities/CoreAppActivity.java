@@ -11,6 +11,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.miniprojetapplicationmobileblooddonation.Fragments.DonorsListFragment;
 import com.example.miniprojetapplicationmobileblooddonation.Fragments.ProfileFragment;
@@ -41,6 +44,8 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_core_app);
 
+        replaceFragment(new DonorsListFragment());
+
         Toolbar toolbar = findViewById(R.id.myToolbar);
         setSupportActionBar(toolbar);
 
@@ -62,6 +67,15 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
             navigationView.setCheckedItem(R.id.profile);
         }
 
+
+    }
+
+    private void replaceFragment(Fragment fragment) {
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
 
     }
 
