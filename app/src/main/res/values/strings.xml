@@ -39,6 +39,8 @@
     <!-- drawer part -->
     <string name="open">Open Navigation Drawer</string>
     <string name="close">Close Navigation Drawer</string>
+    <string name="profile">Profile</string>
+    <string name="demanders_list">Demanders List</string>
 
     <string-array name="bloodGroups">
         <item>Groupe</item>

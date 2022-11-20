@@ -11,7 +11,7 @@
             android:title="Donor List"/>
         <item android:id="@+id/demanderList"
             android:icon="@drawable/receiver"
-            android:title="Demander List"/>
+            android:title="Demanders List"/>
         <item android:id="@+id/deconnection"
             android:icon="@drawable/exit"
             android:title="Deconnection"/>

@@ -1,6 +1,7 @@
 package com.example.miniprojetapplicationmobileblooddonation.Activities;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
@@ -42,6 +43,7 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle(R.string.profile);
         setContentView(R.layout.activity_core_app);
 
         replaceFragment(new DonorsListFragment());
@@ -100,17 +102,19 @@ public class CoreAppActivity extends AppCompatActivity implements  NavigationVie
             case R.id.profile: {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new ProfileFragment()).commit();
-                Toast.makeText(CoreAppActivity.this, "Page profile", Toast.LENGTH_SHORT).show();
+                // on change le title de l'activite qui contient les fragments
+                setTitle(R.string.profile);
                 break;
             }
             case R.id.donorList: {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new DonorsListFragment()).commit();
-                Toast.makeText(CoreAppActivity.this, "Page donor list", Toast.LENGTH_SHORT).show();
+                setTitle(R.string.donors_list);
                 break;
             }
             case R.id.demanderList: {
-                Toast.makeText(CoreAppActivity.this, "Page demander list", Toast.LENGTH_SHORT).show();
+                //setTitle(R.string.demanders_list);
+                Toast.makeText(CoreAppActivity.this, "Page demanders list", Toast.LENGTH_SHORT).show();
                 break;
             }
             case R.id.deconnection: {

@@ -16,6 +16,7 @@
         <activity
             android:name=".Activities.CoreAppActivity"
             android:exported="false"
+            android:label="@string/profile_email"
             android:theme="@style/Theme.Design.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"
