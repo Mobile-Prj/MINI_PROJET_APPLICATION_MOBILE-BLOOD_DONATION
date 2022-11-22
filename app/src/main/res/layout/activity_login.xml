@@ -70,6 +70,7 @@
         android:text="@string/app_title"
         android:textColor="@color/white"
         android:textSize="45sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,37 +81,39 @@
         android:layout_width="292dp"
         android:layout_height="53dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/white"
+        android:autofillHints=""
+        android:backgroundTint="@color/black"
         android:ellipsize="start"
         android:ems="10"
         android:gravity="center_horizontal"
         android:hint="@string/username"
         android:inputType="textPersonName"
         android:textColorHint="@color/hint_color"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/app_title"
-        tools:ignore="TextContrastCheck"
-        android:autofillHints="" />
+        tools:ignore="TextContrastCheck" />
 
     <EditText
         android:id="@+id/password_login"
         android:layout_width="292dp"
         android:layout_height="53dp"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/white"
+        android:autofillHints=""
+        android:backgroundTint="@color/black"
         android:ellipsize="start"
         android:ems="10"
         android:gravity="center_horizontal"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:textColorHint="@color/hint_color"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username_login"
-        tools:ignore="TextContrastCheck"
-        android:autofillHints="" />
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/login_button"

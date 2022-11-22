@@ -3,7 +3,7 @@
     <string name="loading">Loader of the splash page</string>
     <string name="login_text">login</string>
     <string name="signUp_text">signUp</string>
-    <string name="app_title">App Title</string>
+    <string name="app_title">Save Lives !</string>
     <string name="logo_heart">logo of the application</string>
     <string name="username">username</string>
     <string name="password">password</string>
@@ -45,7 +45,7 @@
     <string name="floating_button">button for lauching request form</string>
 
     <string-array name="bloodGroups">
-        <item>Groupe</item>
+        <item>Group</item>
         <item>A+</item>
         <item>A-</item>
         <item>B+</item>

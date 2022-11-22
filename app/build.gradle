@@ -46,5 +46,7 @@ dependencies {
 
     // Rounded image view
     implementation 'com.makeramen:roundedimageview:2.3.0'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
+    implementation 'io.github.vicmikhailau:MaskedEditText:4.0.7'
 
 }

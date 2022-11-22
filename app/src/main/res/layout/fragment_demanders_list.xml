@@ -10,18 +10,26 @@
         android:layout_height="match_parent"
         android:background="#FFF"
         android:orientation="vertical"
-        tools:context=".list_demandeurs">
-
+        tools:context=".list_demandeurs"
+       >
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/swipeRefresh"
+        >
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/demander_list_recyleview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/toolbar"
-            tools:ignore="NotSibling"
-            tools:listitem="@layout/demander_item_view" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
 
+        </androidx.recyclerview.widget.RecyclerView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </RelativeLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_fab"

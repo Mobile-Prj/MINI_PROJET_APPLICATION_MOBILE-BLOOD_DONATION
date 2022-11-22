@@ -86,18 +86,19 @@
             android:layout_width="292dp"
             android:layout_height="53dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/white"
+            android:autofillHints=""
             android:ellipsize="start"
             android:ems="10"
             android:gravity="center_horizontal"
             android:hint="@string/firstName"
             android:inputType="textPersonName"
             android:textColorHint="@color/hint_color"
+            android:textStyle="bold"
+            android:backgroundTint="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/app_title"
-            tools:ignore="TextContrastCheck"
-            android:autofillHints=""  />
+            tools:ignore="TextContrastCheck" />
 
         <EditText
             android:id="@+id/lastName"
@@ -105,7 +106,6 @@
             android:layout_height="53dp"
             android:layout_marginTop="16dp"
             android:autofillHints=""
-            android:backgroundTint="@color/white"
             android:ellipsize="start"
             android:ems="10"
             android:gravity="center_horizontal"
@@ -116,7 +116,9 @@
             app:layout_constraintHorizontal_bias="0.504"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/firstname"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            android:textStyle="bold"
+            android:backgroundTint="@color/black"/>
 
         <EditText
             android:id="@+id/email"
@@ -124,7 +126,6 @@
             android:layout_height="53dp"
             android:layout_marginTop="16dp"
             android:autofillHints=""
-            android:backgroundTint="@color/white"
             android:ellipsize="start"
             android:ems="10"
             android:gravity="center_horizontal"
@@ -135,7 +136,9 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/lastName"
             app:layout_constraintTop_toBottomOf="@+id/lastName"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            android:textStyle="bold"
+            android:backgroundTint="@color/black"/>
 
         <EditText
             android:id="@+id/editTextPhone"
@@ -143,7 +146,6 @@
             android:layout_height="53dp"
             android:layout_marginTop="16dp"
             android:autofillHints=""
-            android:backgroundTint="@color/white"
             android:ellipsize="start"
             android:ems="10"
             android:gravity="center_horizontal"
@@ -154,7 +156,9 @@
             app:layout_constraintHorizontal_bias="0.375"
             app:layout_constraintStart_toStartOf="@+id/email"
             app:layout_constraintTop_toBottomOf="@+id/email"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            android:textStyle="bold"
+            android:backgroundTint="@color/black"/>
 
         <EditText
             android:id="@+id/address"
@@ -162,7 +166,6 @@
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
             android:autofillHints=""
-            android:backgroundTint="@color/white"
             android:ellipsize="start"
             android:ems="10"
             android:gravity="center_horizontal"
@@ -173,7 +176,9 @@
             app:layout_constraintHorizontal_bias="0.444"
             app:layout_constraintStart_toStartOf="@+id/editTextPhone"
             app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            android:textStyle="bold"
+            android:backgroundTint="@color/black"/>
 
         <TextView
             android:id="@+id/gender"
@@ -219,6 +224,7 @@
                 android:layout_marginStart="30dp"
                 android:text="@string/radio_text_2"
                 android:textColor="@color/white"
+                android:textStyle="bold"
                 tools:ignore="TextContrastCheck" />
         </RadioGroup>
 
@@ -253,7 +259,6 @@
             android:layout_height="53dp"
             android:layout_marginTop="32dp"
             android:autofillHints=""
-            android:backgroundTint="@color/white"
             android:ellipsize="start"
             android:ems="10"
             android:gravity="center_horizontal"
@@ -264,14 +269,15 @@
             app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/listGrpBlood"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            android:textStyle="bold"
+            android:backgroundTint="@color/black"/>
 
         <EditText
             android:id="@+id/password_login"
             android:layout_width="292dp"
             android:layout_height="53dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@color/white"
             android:ellipsize="start"
             android:ems="10"
             android:gravity="center_horizontal"
@@ -283,7 +289,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/username_login"
             tools:ignore="TextContrastCheck"
-            android:autofillHints="" />
+            android:autofillHints=""
+            android:textStyle="bold"
+            android:backgroundTint="@color/black"/>
 
         <TextView
             android:id="@+id/picture_title"
