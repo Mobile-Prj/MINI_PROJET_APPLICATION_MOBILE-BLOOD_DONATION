@@ -1,6 +1,6 @@
 package com.example.miniprojetapplicationmobileblooddonation.Models;
 
-public class DonorsList {
+public class Donor {
 
     String title;
     String name;
@@ -8,12 +8,16 @@ public class DonorsList {
     String city;
     int image;
 
-    public DonorsList(String title,String name, String phone,String city, int image) {
+    public Donor(String title,String name, String phone,String city, int image) {
         this.title = title;
         this.name = name;
         this.phone = phone;
         this.city = city;
         this.image = image;
+    }
+
+    public Donor() {
+
     }
 
     public String getName() {

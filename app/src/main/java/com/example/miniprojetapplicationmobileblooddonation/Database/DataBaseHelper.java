@@ -8,6 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.miniprojetapplicationmobileblooddonation.Models.Donor;
+
+import java.util.ArrayList;
+
 public class DataBaseHelper extends SQLiteOpenHelper {
     public DataBaseHelper(@Nullable Context context) {
         super(context, "BloodDonationDB1", null, 1);
@@ -51,4 +55,51 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor c =db.rawQuery("SELECT * from requester ",null);
         return c;
     }
+
+    //Display list of donors
+    public ArrayList<Donor> getDonors(){
+
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM USER WHERE Isdonor  ";
+        Cursor cursor = db.rawQuery(query, null);
+        ArrayList<Donor> donors = new ArrayList<Donor>();
+        while(cursor.moveToNext()){
+            Donor donor = new Donor();
+            donor.setName(cursor.getString(2));
+            donor.setTitle(cursor.getString(7));
+            donor.setCity(cursor.getString(5));
+            donor.setPhone(cursor.getString(4));
+            donor.setImage(cursor.getInt(9));
+            donors.add(donor);
+        }
+        cursor.close();
+        db.close();
+        return donors;
+    }
+
+    // Search Donors
+
+    public ArrayList<Donor> getSearchedDonors(String loca, String catB){
+
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM USER WHERE Isdonor AND Address=? AND BloodCategory=?";
+        ArrayList<Donor> donors = new ArrayList<Donor>();
+        Cursor cursor = db.rawQuery(query, new String[]{loca,catB});
+        while(cursor.moveToNext()){
+            Donor donor = new Donor();
+            donor.setName(cursor.getString(2));
+            donor.setTitle(cursor.getString(7));
+            donor.setCity(cursor.getString(5));
+            donor.setPhone(cursor.getString(4));
+            donor.setImage(cursor.getInt(9));
+            donors.add(donor);
+        }
+        cursor.close();
+        db.close();
+        return donors;
+
+
+    }
+
+
 }

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,7 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.miniprojetapplicationmobileblooddonation.Adapters.DonorsAdapter;
-import com.example.miniprojetapplicationmobileblooddonation.Models.DonorsList;
+import com.example.miniprojetapplicationmobileblooddonation.Database.DataBaseHelper;
+import com.example.miniprojetapplicationmobileblooddonation.Models.Donor;
 import com.example.miniprojetapplicationmobileblooddonation.R;
 
 import java.util.ArrayList;
@@ -20,7 +23,9 @@ import java.util.List;
 
 public class DonorsListFragment extends Fragment {
 
-    private List<DonorsList> items;
+    private List<Donor> items;
+    Button btnSearch;
+    Spinner location,bloodGroop;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -34,27 +39,34 @@ public class DonorsListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        dataInitialize();
+
+        btnSearch= (Button) view.findViewById(R.id.btnSearch);
+        location=(Spinner) view.findViewById(R.id.cityList);
+        bloodGroop=(Spinner) view.findViewById(R.id.BloodGroupList);
+        items=new ArrayList<>();
 
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recyclerview);
+
+        DataBaseHelper db = new DataBaseHelper(getContext());
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        DonorsAdapter donorsAdapter = new DonorsAdapter(getContext(),items);
-        recyclerView.setAdapter(donorsAdapter);
-        donorsAdapter.notifyDataSetChanged();
-    }
+        items = db.getDonors();;
+        recyclerView.setAdapter(new DonorsAdapter(getContext(),items));
 
-    private void dataInitialize() {
 
-        items = new ArrayList<DonorsList>();
-        items.add(new DonorsList("A+ Donor","Full Name : abbasy soukaina","Phone : +212650065744","City : Marrakech",R.drawable.ic_profile));
-        items.add(new DonorsList("AB+ Donor","Full Name : Sara Chakir","Phone : +212650065744","City : Rabat",R.drawable.ic_profile));
-        items.add(new DonorsList("A- Donor","Full Name : Yassmin Kardad","Phone : +212650065744","City : Safi",R.drawable.ic_profile));
-        items.add(new DonorsList("A+ Donor","Full Name : el abbasy soukaina","Phone : +212650065744","City : Marrakech",R.drawable.ic_profile));
-        items.add(new DonorsList("B+ Donor","Full Name : el abbasy soukaina","Phone : +212650065744","City : Marrakech",R.drawable.ic_profile));
-        items.add(new DonorsList("O+ Donor","Full Name : el abbasy soukaina","Phone : +212650065744","City : Rabat",R.drawable.ic_profile));
-        items.add(new DonorsList("AB- Donor","Full Name : el abbasy soukaina","Phone : +212650065744","City : Safi",R.drawable.ic_profile));
-        items.add(new DonorsList("A+ Donor","Full Name : el abbasy soukaina","Phone : +212650065744","City : Marrakech",R.drawable.ic_profile));
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String loc = location.getSelectedItem().toString();
+                String cat = bloodGroop.getSelectedItem().toString();
+                items = db.getSearchedDonors(loc,cat);
+                recyclerView.setAdapter(new DonorsAdapter(getContext(),items));
+            }
+        });
+
 
     }
+
+
+
 }

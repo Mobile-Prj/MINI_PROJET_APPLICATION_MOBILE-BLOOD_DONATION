@@ -9,16 +9,16 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.miniprojetapplicationmobileblooddonation.Models.DonorsList;
+import com.example.miniprojetapplicationmobileblooddonation.Models.Donor;
 import com.example.miniprojetapplicationmobileblooddonation.R;
 
 public class DonorsAdapter extends RecyclerView.Adapter<DonorsHolder> {
 
 
     Context context;
-    List<DonorsList> items;
+    List<Donor> items;
 
-    public DonorsAdapter(Context context, List<DonorsList> items) {
+    public DonorsAdapter(Context context, List<Donor> items) {
         this.context = context;
         this.items = items;
     }
@@ -31,10 +31,10 @@ public class DonorsAdapter extends RecyclerView.Adapter<DonorsHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull  DonorsHolder holder, int position) {
-        holder.titleView.setText(items.get(position).getTitle());
-        holder.nameView.setText(items.get(position).getName());
-        holder.phoneView.setText(items.get(position).getPhone());
-        holder.cityView.setText(items.get(position).getCity());
+        holder.titleView.setText(items.get(position).getTitle()+ "  Donor");
+        holder.nameView.setText("Full Name : "+items.get(position).getName());
+        holder.phoneView.setText("Phone : "+items.get(position).getPhone());
+        holder.cityView.setText("City : "+items.get(position).getCity());
         holder.imageView.setImageResource(items.get(position).getImage());
     }
 
@@ -43,4 +43,3 @@ public class DonorsAdapter extends RecyclerView.Adapter<DonorsHolder> {
         return items.size();
     }
 }
-

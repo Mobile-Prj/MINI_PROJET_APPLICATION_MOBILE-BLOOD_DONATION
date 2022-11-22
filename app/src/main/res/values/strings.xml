@@ -35,6 +35,30 @@
     <!-- donor_list part -->
     <string name="icon">icon</string>
     <string name="donors_list">Donors List</string>
+    <string name="choose_your_city">Choose your City:</string>
+    <string name="search">Search</string>
+    <string name="choose_blood_group">Choose Blood Group:</string>
+    <string-array name="Blood_Group">
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+    </string-array>
+    <string-array name="city_list">
+        <item>Marrakech</item>
+        <item>Rabat</item>
+        <item>Safi</item>
+        <item>Casablanca</item>
+        <item>Sale</item>
+        <item>Tanger</item>
+        <item>Fes</item>
+        <item>Meknes</item>
+
+    </string-array>
 
     <!-- drawer part -->
     <string name="open">Open Navigation Drawer</string>
