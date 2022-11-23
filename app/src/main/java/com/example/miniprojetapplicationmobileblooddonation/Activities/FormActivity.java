@@ -1,10 +1,17 @@
 package com.example.miniprojetapplicationmobileblooddonation.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
+import android.app.Dialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
@@ -12,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.miniprojetapplicationmobileblooddonation.Database.DataBaseHelper;
+import com.example.miniprojetapplicationmobileblooddonation.Fragments.DemandersListFragment;
 import com.example.miniprojetapplicationmobileblooddonation.R;
 import com.vicmikhailau.maskededittext.MaskedEditText;
 
@@ -28,7 +36,7 @@ public class FormActivity extends AppCompatActivity {
     private SimpleDateFormat simpleDateFormat;
     private String date;
     RecyclerView recyclerView;
-
+    Dialog dialog;
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +49,7 @@ public class FormActivity extends AppCompatActivity {
         Contact=findViewById(R.id.Contact);
         listSpinner=findViewById(R.id.SpinnerBlood);
         recyclerView = findViewById(R.id.demander_list_recyleview);
-
+        dialog = new Dialog(this);
         title.setText("New Request");
         btnInsert.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SimpleDateFormat")
@@ -63,16 +71,17 @@ public class FormActivity extends AppCompatActivity {
                 else {
                     boolean CheckInsertedData = db.insertRequester("FULL NAME",ContactMasked,date,LocationTXT,BloodCateg);
                     if(CheckInsertedData){
-                        Toast.makeText(getApplicationContext(),"Your request have been successfully added !",Toast.LENGTH_LONG).show();
+                        /*Toast.makeText(getApplicationContext(),"Your request have been successfully added !",Toast.LENGTH_LONG).show();
                         finish();
                         overridePendingTransition(0, 0);
                         startActivity(getIntent());
-                        overridePendingTransition(0, 0);
-
+                        overridePendingTransition(0, 0);*/
+                        openSuccessDialog();
 
                     }
                     else
-                        Toast.makeText(getApplicationContext(),"Error! Can't add this request",Toast.LENGTH_LONG).show();
+                        openFailDialog();
+                        //Toast.makeText(getApplicationContext(),"Error! Can't add this request",Toast.LENGTH_LONG).show();
 
                 }
 
@@ -81,6 +90,42 @@ public class FormActivity extends AppCompatActivity {
         });
 
     }
+    private void openFailDialog() {
+        dialog.setContentView(R.layout.dialog_error_layout);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        //ImageView imgClose= dialog.findViewById(R.id.imageViewClose);
+        Button btnOk = dialog.findViewById(R.id.btn_Error);
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+
+            }
+        });
+        dialog.show();
+    }
+
+    private void openSuccessDialog() {
+        dialog.setContentView(R.layout.dialog_success_layout);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        //ImageView imgClose= dialog.findViewById(R.id.imageViewClose);
+        Button btnOk = dialog.findViewById(R.id.btn_Success);
+
+
+        btnOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                finish();
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+            }
+        });
+        dialog.show();
+    }
+
+
 
 
 }

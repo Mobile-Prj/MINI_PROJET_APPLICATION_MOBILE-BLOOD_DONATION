@@ -12,17 +12,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MINIPROJETAPPLICATIONMOBILEBLOODDONATION"
         tools:targetApi="31">
+
         <activity
             android:name=".Activities.FormActivity"
+            android:label="Send a Request"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Activities.CoreAppActivity"
+            android:name=".Activities.MenuActivities.MenuActivity"
             android:exported="false"
-            android:label="@string/profile_email"
+            android:label="Home"
             android:theme="@style/Theme.Design.NoActionBar">
             <meta-data
                 android:name="android.app.lib_name"

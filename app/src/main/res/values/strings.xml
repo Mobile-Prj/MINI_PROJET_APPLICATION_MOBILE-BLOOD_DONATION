@@ -60,6 +60,27 @@
 
     </string-array>
 
+    <string-array name="ld_activityScreenTitles">
+        <item></item>
+        <item>Home</item>
+        <item>Profile</item>
+        <item>List of Requesters </item>
+        <item>List of Donors</item>
+        <item />
+        <item>Log Out</item>
+    </string-array>
+
+    <string-array name="ld_activityScreenIcons">
+        <item>@drawable/ic_baseline_close_24</item>
+        <item>@drawable/ic_baseline_home_24</item>
+        <item>@drawable/ic_action_name</item>
+        <item>@drawable/ic_baseline_list_24</item>
+        <item>@drawable/ic_requesters</item>
+        <item>0</item>
+        <item>@drawable/ic_logout</item>
+    </string-array>
+
+
     <!-- drawer part -->
     <string name="open">Open Navigation Drawer</string>
     <string name="close">Close Navigation Drawer</string>
@@ -79,5 +100,16 @@
         <item>O+</item>
         <item>O-</item>
     </string-array>
+
+    <string name="srn_drawer_open">Open</string>
+    <string name="srn_drawer_close">Close</string>
+
+    <string name="srn_ex_no_menu_view">No view for menu provided. You must either call .withMenuView(View) or pass a valid resource id to .withMenuLayout(int)</string>
+    <string name="srn_ex_bad_content_view">Your content view must contain exactly one child. Make sure you call inject() after setContentView().</string>
+    <string name="success">Success !</string>
+    <string name="your_request_have_been_successfully_added">Your request have been successfully added !</string>
+    <string name="okay">OKAY</string>
+
+    <item name="srn_root_layout" type="id" />
 
 </resources>

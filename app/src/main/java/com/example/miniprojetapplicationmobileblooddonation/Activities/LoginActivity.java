@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.miniprojetapplicationmobileblooddonation.Activities.MenuActivities.MenuActivity;
 import com.example.miniprojetapplicationmobileblooddonation.R;
 
 public class LoginActivity extends AppCompatActivity {
@@ -32,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void login(View v){
-        Intent intent = new Intent(this, CoreAppActivity.class);
+        Intent intent = new Intent(this, MenuActivity.class);
         startActivity(intent);
     }
 }

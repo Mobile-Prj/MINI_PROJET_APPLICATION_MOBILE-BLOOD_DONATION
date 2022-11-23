@@ -7,9 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pink">#22577A</color>
     <color name="primary_color">#FA2B2B</color>
     <color name="intermediate">#90F81313</color>
     <color name="hint_color">#B6A7A7</color>
     <color name="radio_blue">#0C80FD</color>
     <color name="colorDark">#3A3E41</color>
+    <color name="colorAccent">#448AFF</color>
+    <color name="success">#42B346</color>
+    <color name="fail">#F44336</color>
+    <color name="textColorPrimary">#212121</color>
+    <color name="textColorSecondary">#757575</color>
+    <color name="red">#DFA51409</color>
 </resources>
