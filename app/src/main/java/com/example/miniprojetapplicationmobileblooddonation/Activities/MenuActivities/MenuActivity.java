@@ -98,18 +98,22 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
         if (position == POS_HOME) {
             HomeFragment home= new HomeFragment();
             transaction.replace(R.id.container,home);
+            setTitle(R.string.home);
         }
         else if (position == POS_DONORSLIST) {
             DonorsListFragment donors_list= new DonorsListFragment();
             transaction.replace(R.id.container,donors_list);
+            setTitle(R.string.donors_list);
         }
         else if (position == POS_REQUESTERSLIST) {
             DemandersListFragment requesters_list= new DemandersListFragment();
             transaction.replace(R.id.container,requesters_list);
+            setTitle(R.string.demanders_list);
         }
         else if (position == POS_PROFILE) {
             ProfileFragment profile= new ProfileFragment();
             transaction.replace(R.id.container,profile);
+            setTitle(R.string.profile);
         }
 
         else if (position == POS_LOGOUT) {
