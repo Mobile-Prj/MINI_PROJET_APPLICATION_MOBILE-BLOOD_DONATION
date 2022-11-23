@@ -37,21 +37,6 @@
             app:srcCompat="@drawable/profile_img"
             android:contentDescription="@string/img_profile_desc" />
 
-        <TextView
-            android:id="@+id/user_name"
-            android:layout_width="197dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="4dp"
-            android:text="@string/user_name"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
-
 
         <Button
             android:id="@+id/edit_profile_button"
@@ -83,7 +68,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.52"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/user_name">
+            app:layout_constraintTop_toBottomOf="@+id/profile_lastName">
 
             <ImageView
                 android:id="@+id/icone_email"
@@ -98,8 +83,8 @@
                 android:id="@+id/profile_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingVertical="7dp"
                 android:paddingHorizontal="15dp"
+                android:paddingVertical="7dp"
                 android:text="@string/profile_email"
                 android:textAlignment="center"
                 android:textColor="@color/black"
@@ -130,7 +115,7 @@
                 android:paddingStart="12dp"
                 app:srcCompat="@drawable/ic_baseline_phone_24" />
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_telephone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -166,7 +151,7 @@
                 android:paddingStart="12dp"
                 app:srcCompat="@drawable/ic_baseline_home_24" />
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_address"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -202,7 +187,7 @@
                 android:paddingStart="12dp"
                 app:srcCompat="@drawable/ic_baseline_female_24" />
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_gender"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -238,7 +223,7 @@
                 android:paddingStart="12dp"
                 app:srcCompat="@drawable/ic_baseline_bloodtype_24" />
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_blood_type"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -268,6 +253,38 @@
             app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/barre_blood_type" />
+
+        <EditText
+            android:id="@+id/profile_firstName"
+            android:layout_width="155dp"
+            android:layout_height="46dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_lastName"
+            app:layout_constraintEnd_toStartOf="@+id/profile_lastName"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/profile_lastName"
+            android:layout_width="159dp"
+            android:layout_height="45dp"
+            android:layout_marginEnd="40dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:lineSpacingExtra="25sp"
+            android:text="Name"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
