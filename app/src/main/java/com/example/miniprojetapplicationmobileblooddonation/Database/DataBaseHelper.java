@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import androidx.annotation.Nullable;
 
@@ -21,7 +23,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //CREATE Table
-        sqLiteDatabase.execSQL("CREATE TABLE user(id integer primary key AUTOINCREMENT,FirstName text,LastName text,gender text,Phone text,Address text,email text,BloodCategory text,password text,image text,Isdonor boolean)");
+        sqLiteDatabase.execSQL("CREATE TABLE user(id integer primary key AUTOINCREMENT,FirstName text,LastName text,gender text,Phone text,Address text,email text,BloodCategory text,password text,image blob,Isdonor boolean)");
         sqLiteDatabase.execSQL("CREATE TABLE requester(id integer primary key AUTOINCREMENT,FullName text,Contact text,PostedOn text,Location text,BloodCategory text)");
 
     }
@@ -110,7 +112,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, new String[]{email});
 
         // get informations from the cursor
-        userProfile.setUserImage(cursor.getString(9));
         userProfile.setFirstName(cursor.getString(1));
         userProfile.setLastName(cursor.getString(2));
         userProfile.setEmail(cursor.getString(6));
@@ -118,8 +119,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         userProfile.setGender(cursor.getString(3));
         userProfile.setPhone(cursor.getString(3));
         userProfile.setBloodType(cursor.getString(7));
-        userProfile.setUserImage(cursor.getString(9));
         userProfile.setDonor(cursor.getInt(10)==1);
+
+        byte[] img = cursor.getBlob(9);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(img, 0, img.length);
+        userProfile.setUserImage(bitmap);
 
         return userProfile;
 
@@ -135,7 +139,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValues.put("phone", userProfile.getPhone());
         contentValues.put("gender", userProfile.getGender());
         contentValues.put("bloodType", userProfile.getBloodType());
-        contentValues.put("image", userProfile.getUserImage());
+        //contentValues.put("image", userProfile.getUserImage());
         contentValues.put("isDonor", userProfile.getDonor());
 
         Cursor cursor = db.rawQuery("SELECT * FROM USER WHERE email = ?", new String[]{userProfile.getEmail()});
