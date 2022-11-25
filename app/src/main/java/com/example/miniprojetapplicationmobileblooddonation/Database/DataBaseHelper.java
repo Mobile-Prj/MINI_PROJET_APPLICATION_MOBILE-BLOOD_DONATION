@@ -52,6 +52,57 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         else return true;
 
     }
+    public boolean insertData(String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s9, byte[] img, Boolean b) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues c = new ContentValues();
+        c.put("FirstName", s1);
+        c.put("LastName", s2);
+        c.put("email", s3);
+        c.put("Phone", s4);
+        c.put("Address", s5);
+        c.put("gender", s6);
+        c.put("BloodCategory", s7);
+        c.put("password", s9);
+        c.put("image", img);
+        c.put("Isdonor", b);
+
+        long result = db.insert("user", null, c);
+        if (result == -1) {
+            return false;
+        } else return true;
+
+    }
+    public Boolean checkusername(String username) {
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from user where email = ?", new String[]{username});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+
+    public Boolean checkusernamepassword(String username, String password) {
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor = MyDB.rawQuery("Select * from user where email = ? and password = ?", new String[]{username, password});
+        if (cursor.getCount() > 0)
+            return true;
+        else
+            return false;
+    }
+    public String getUsername(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor=MyDB.rawQuery("select * from user where email= ?",new String[]{username});
+        cursor.moveToFirst();
+        return cursor.getString(0);
+    }
+    public Bitmap getImage(String username){
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        Cursor cursor=MyDB.rawQuery("select * from user where email= ?",new String[]{username});
+        cursor.moveToFirst();
+        byte[] bitmap=cursor.getBlob(1);
+        Bitmap image= BitmapFactory.decodeByteArray( bitmap,0,bitmap.length);
+        return image;
+    }
 
     public Cursor getRequesters(){
         SQLiteDatabase db = this.getWritableDatabase();
