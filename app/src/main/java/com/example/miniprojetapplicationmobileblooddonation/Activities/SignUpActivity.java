@@ -36,6 +36,7 @@ import java.io.IOException;
 public class SignUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     EditText fname,lname,mail,phone,add,password;
     RadioGroup rg;
+    Spinner listSpinner;
     ImageView img;
     CheckBox donor;
     Button signup ,selectimg;
@@ -53,7 +54,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
         appTitle = findViewById(R.id.app_title);
         listBloodGroup = findViewById(R.id.listGrpBlood);
-
+        listSpinner=findViewById(R.id.listCities);
         myFont = Typeface.createFromAsset(getAssets(), "fonts/LavishlyYours-Regular.ttf");
         appTitle.setTypeface(myFont);
 
@@ -65,7 +66,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         lname=findViewById(R.id.lastName);
         mail=findViewById(R.id.email);
         phone=findViewById(R.id.editTextPhone);
-        add=findViewById(R.id.address);
         password=findViewById(R.id.password_login);
         rg=findViewById(R.id.radioGroup);
         img=findViewById(R.id.add_img);
@@ -82,14 +82,14 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
             String nom=lname.getText().toString();
             String email=mail.getText().toString();
             String num=phone.getText().toString();
-            String addr=add.getText().toString();
+            String addr=listSpinner.getSelectedItem().toString();
             String pass=password.getText().toString();
             String BloodGrup=listBloodGroup.getSelectedItem().toString();
             if(rg.getCheckedRadioButtonId()==R.id.radioButton2) gender="FEMALE";
             else gender="Male";
             Boolean don= Boolean.valueOf(donor.getText().toString());
 
-            if(prenom.equals("")||nom.equals("")||email.equals("")||num.equals("")||addr.equals("") || pass.equals("")||BloodGrup.equals("Groupe"))
+            if(prenom.equals("")||nom.equals("")||email.equals("")||num.equals("")|| pass.equals("")||BloodGrup.equals("Groupe"))
                 Toast.makeText(SignUpActivity.this ,"Please enter all the fields",Toast.LENGTH_SHORT).show();
 
             else {

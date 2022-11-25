@@ -211,6 +211,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
-
+    public void  updatepassword(String email,String password)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues updatedValues = new ContentValues();
+        updatedValues.put("password",password);
+        String where="email = ?";
+        db.update("user",updatedValues, where, new String[]{email});
+    }
 
 }
