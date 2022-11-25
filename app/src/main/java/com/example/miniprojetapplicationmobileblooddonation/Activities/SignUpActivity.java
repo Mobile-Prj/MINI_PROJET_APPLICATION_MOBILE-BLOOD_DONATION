@@ -74,7 +74,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         db=new DataBaseHelper(this);
         selectimg=findViewById(R.id.picture_title);
 
-        selectimg.setOnClickListener(view -> imageChooser());
+        img.setOnClickListener(view -> imageChooser());
 
         signup.setOnClickListener(view -> {
             String gender;

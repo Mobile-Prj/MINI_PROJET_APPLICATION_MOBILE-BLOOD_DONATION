@@ -49,12 +49,18 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private SlidingRootNav slidingRootNav;
     Dialog dialog;
 
+    Bundle bundle;
+    String userEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        // to get data passed from login activity
+        bundle = getIntent().getExtras();
 
         slidingRootNav = new SlidingRootNavBuilder(this)
                 .withDragDistance(180)
@@ -97,21 +103,25 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if (position == POS_HOME) {
             HomeFragment home= new HomeFragment();
+            home.setArguments(bundle);
             transaction.replace(R.id.container,home);
             setTitle(R.string.home);
         }
         else if (position == POS_DONORSLIST) {
             DonorsListFragment donors_list= new DonorsListFragment();
+            donors_list.setArguments(bundle);
             transaction.replace(R.id.container,donors_list);
             setTitle(R.string.donors_list);
         }
         else if (position == POS_REQUESTERSLIST) {
             DemandersListFragment requesters_list= new DemandersListFragment();
+            requesters_list.setArguments(bundle);
             transaction.replace(R.id.container,requesters_list);
             setTitle(R.string.demanders_list);
         }
         else if (position == POS_PROFILE) {
             ProfileFragment profile= new ProfileFragment();
+            profile.setArguments(bundle);
             transaction.replace(R.id.container,profile);
             setTitle(R.string.profile);
         }

@@ -163,17 +163,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, new String[]{email});
 
         // get informations from the cursor
-        userProfile.setFirstName(cursor.getString(1));
-        userProfile.setLastName(cursor.getString(2));
-        userProfile.setEmail(cursor.getString(6));
-        userProfile.setAddress(cursor.getString(5));
-        userProfile.setGender(cursor.getString(3));
-        userProfile.setPhone(cursor.getString(3));
-        userProfile.setBloodType(cursor.getString(7));
-        userProfile.setDonor(cursor.getInt(10)==1);
+        while(cursor.moveToNext()) {
+            userProfile.setFirstName(cursor.getString(1));
+            userProfile.setLastName(cursor.getString(2));
+            userProfile.setEmail(cursor.getString(6));
+            userProfile.setAddress(cursor.getString(5));
+            userProfile.setGender(cursor.getString(3));
+            userProfile.setPhone(cursor.getString(4));
+            userProfile.setBloodType(cursor.getString(7));
+            userProfile.setDonor(cursor.getInt(10) == 1);
 
-        byte[] img_byte = cursor.getBlob(9);
-        userProfile.setUserImage(img_byte);
+            byte[] img_byte = cursor.getBlob(9);
+            userProfile.setUserImage(img_byte);
+        }
+
+        cursor.close();
+        db.close();
 
         return userProfile;
 
@@ -188,7 +193,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         contentValues.put("address", userProfile.getAddress());
         contentValues.put("phone", userProfile.getPhone());
         contentValues.put("gender", userProfile.getGender());
-        contentValues.put("bloodType", userProfile.getBloodType());
+        contentValues.put("BloodCategory", userProfile.getBloodType());
         contentValues.put("image", userProfile.getUserImage());
         contentValues.put("isDonor", userProfile.getDonor());
 

@@ -26,16 +26,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/red_blood_cells_1920x1080" />
 
-        <ImageView
+        <com.makeramen.roundedimageview.RoundedImageView
             android:id="@+id/imageView9"
-            android:layout_width="180dp"
-            android:layout_height="180dp"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/profile_image_bgd_shape"
             android:contentDescription="@string/img_profile_desc"
             app:layout_constraintBottom_toBottomOf="@+id/img_blood_cells"
             app:layout_constraintEnd_toEndOf="parent"
+            app:riv_oval="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/img_blood_cells"
-            app:srcCompat="@drawable/profile_img" />
+            android:src="@drawable/profile_img" />
 
 
         <Button
@@ -154,6 +157,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/background"
+                android:popupBackground="@color/white"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 
@@ -186,6 +190,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/background"
+                android:popupBackground="@color/white"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         </LinearLayout>
@@ -217,6 +222,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/background"
+                android:popupBackground="@color/white"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         </LinearLayout>

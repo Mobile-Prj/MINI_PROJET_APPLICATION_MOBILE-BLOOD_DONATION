@@ -1,6 +1,13 @@
 package com.example.miniprojetapplicationmobileblooddonation.Fragments;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +20,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -20,6 +29,10 @@ import androidx.fragment.app.Fragment;
 import com.example.miniprojetapplicationmobileblooddonation.Database.DataBaseHelper;
 import com.example.miniprojetapplicationmobileblooddonation.Models.UserProfile;
 import com.example.miniprojetapplicationmobileblooddonation.R;
+import com.makeramen.roundedimageview.RoundedDrawable;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 public class ProfileFragment extends Fragment {
 
@@ -33,6 +46,9 @@ public class ProfileFragment extends Fragment {
     String user_email;
     ArrayAdapter<CharSequence> bloodTpyeArrayAdapter, genderArrayAdapter, cityArrayAdapter;
 
+    Bitmap imgProfileBitmap;
+    RoundedDrawable roundedProfileImage;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,8 +59,13 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // get the email from the Menu activity to perform requests
+        if(getArguments() != null){
+            user_email = getArguments().getString("user_email");
+        }
+
         DataBaseHelper dataBaseHelper = new DataBaseHelper(getContext());
-        userProfile = new UserProfile(
+        /*userProfile = new UserProfile(
                 null,
                 "Frederic",
                 "FAYA",
@@ -56,8 +77,10 @@ public class ProfileFragment extends Fragment {
                 true
         );
 
+         */
+
         // get the user profile
-        // userProfile = dataBaseHelper.getUserProfile(user_email);
+        userProfile = dataBaseHelper.getUserProfile(user_email);
 
         editButton = view.findViewById(R.id.edit_profile_button);
         phone = view.findViewById(R.id.profile_telephone);
@@ -80,9 +103,8 @@ public class ProfileFragment extends Fragment {
         bloodType.setAdapter(bloodTpyeArrayAdapter);
         gender.setAdapter(genderArrayAdapter);
         address.setAdapter(cityArrayAdapter);
-        //bloodType.setOnItemSelectedListener(this);
 
-        // set initial values in the deseign
+        // set initial values in the design
         firstName.setText(userProfile.getFirstName());
         lastName.setText(userProfile.getLastName());
         email.setText(userProfile.getEmail());
@@ -96,14 +118,10 @@ public class ProfileFragment extends Fragment {
         int position_city = cityArrayAdapter.getPosition(userProfile.getAddress());
         address.setSelection(position_city);
 
+        imgProfileBitmap = BitmapFactory.decodeByteArray(userProfile.getUserImage(), 0, userProfile.getUserImage().length);
+        profileImage.setImageBitmap(imgProfileBitmap);
 
-        phone.setEnabled(false);
-        address.setEnabled(false);
-        gender.setEnabled(false);
-        bloodType.setEnabled(false);
-        firstName.setEnabled(false);
-        lastName.setEnabled(false);
-        isDonor.setClickable(false);
+        enable(false);
 
 
         editButton.setOnClickListener(new View.OnClickListener() {
@@ -114,14 +132,13 @@ public class ProfileFragment extends Fragment {
                     // change the edit button to done
                     editButton.setText(R.string.edit_done);
                     // set the editText editable to change values
-                    phone.setEnabled(true);
-                    address.setEnabled(true);
-                    gender.setEnabled(true);
-                    bloodType.setEnabled(true);
-                    firstName.setEnabled(true);
-                    lastName.setEnabled(true);
-                    isDonor.setClickable(true);
-                    profileImage.setClickable(true);
+                    enable(true);
+                    profileImage.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            imageChooser();
+                        }
+                    });
                 }else{
 
                     // get the new values of texts
@@ -133,17 +150,18 @@ public class ProfileFragment extends Fragment {
                     userProfile.setBloodType(bloodType.getSelectedItem().toString());
                     userProfile.setDonor(isDonor.isChecked());
 
+                    // convert the image to bipmap and then use the bipmap to get roundedImage
+                    profileImage.setDrawingCacheEnabled(true);
+                    imgProfileBitmap = profileImage.getDrawingCache();
+                    roundedProfileImage = RoundedDrawable.fromBitmap(imgProfileBitmap);
+                    userProfile.setUserImage(getImage(roundedProfileImage));
+
                     boolean updated = dataBaseHelper.updateUserProfile(userProfile);
 
                     if(updated){
                         editButton.setText(R.string.edit_text);
-                        phone.setEnabled(false);
-                        address.setEnabled(false);
-                        gender.setEnabled(false);
-                        bloodType.setEnabled(false);
-                        firstName.setEnabled(false);
-                        lastName.setEnabled(false);
-                        isDonor.setClickable(false);
+                        enable(false);
+                        Toast.makeText(getContext(),"Profile Updated successfully !",Toast.LENGTH_LONG).show();
                     }else{
                         Toast.makeText(getContext(),"Update profile failed !",Toast.LENGTH_LONG).show();
                     }
@@ -153,11 +171,61 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        profileImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
+
+    private void enable(boolean enabled){
+        phone.setEnabled(enabled);
+        address.setEnabled(enabled);
+        gender.setEnabled(enabled);
+        bloodType.setEnabled(enabled);
+        firstName.setEnabled(enabled);
+        lastName.setEnabled(enabled);
+        isDonor.setClickable(enabled);
+        profileImage.setClickable(enabled);
+    }
+
+    private void imageChooser()
+    {
+        Intent i = new Intent();
+        i.setType("image/*");
+        i.setAction(Intent.ACTION_GET_CONTENT);
+
+        launchSomeActivity.launch(i);
+    }
+
+    private byte[] getImage(RoundedDrawable img) {
+        Bitmap bitmap = RoundedDrawable.drawableToBitmap(img);
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] image = stream.toByteArray();
+        return  image;
+    }
+
+    ActivityResultLauncher<Intent> launchSomeActivity
+            = registerForActivityResult(
+            new ActivityResultContracts
+                    .StartActivityForResult(),
+            result -> {
+                if (result.getResultCode()
+                        == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    // do your operation from here....
+                    if (data != null
+                            && data.getData() != null) {
+                        Uri selectedImageUri = data.getData();
+                        Bitmap selectedImageBitmap = null;
+                        try {
+                            selectedImageBitmap
+                                    = MediaStore.Images.Media.getBitmap(
+                                    getActivity().getContentResolver(),
+                                    selectedImageUri);
+                        }
+                        catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        profileImage.setImageBitmap(
+                                selectedImageBitmap);
+                    }
+                }
+            });
 }
