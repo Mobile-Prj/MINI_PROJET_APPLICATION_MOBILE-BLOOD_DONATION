@@ -3,7 +3,7 @@ package com.example.miniprojetapplicationmobileblooddonation.Models;
 import android.graphics.Bitmap;
 
 public class UserProfile {
-    Bitmap userImage;
+    byte[] userImage;
     String firstName;
     String LastName;
     String email;
@@ -13,7 +13,7 @@ public class UserProfile {
     String bloodType;
     boolean isDonor;
 
-    public UserProfile(Bitmap userImage, String firstName, String lastName, String email, String phone, String address, String gender, String bloodType, boolean isDonor) {
+    public UserProfile(byte[] userImage, String firstName, String lastName, String email, String phone, String address, String gender, String bloodType, boolean isDonor) {
         this.userImage = userImage;
         this.firstName = firstName;
         LastName = lastName;
@@ -29,11 +29,11 @@ public class UserProfile {
 
     }
 
-    public Bitmap getUserImage() {
+    public byte[] getUserImage() {
         return userImage;
     }
 
-    public void setUserImage(Bitmap userImage) {
+    public void setUserImage(byte[] userImage) {
         this.userImage = userImage;
     }
 
