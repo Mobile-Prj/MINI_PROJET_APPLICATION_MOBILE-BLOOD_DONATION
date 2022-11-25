@@ -160,33 +160,12 @@
             android:textStyle="bold"
             android:backgroundTint="@color/black"/>
 
-        <EditText
-            android:id="@+id/address"
-            android:layout_width="283dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:autofillHints=""
-            android:ellipsize="start"
-            android:ems="10"
-            android:gravity="center_horizontal"
-            android:hint="@string/address"
-            android:inputType="textPostalAddress"
-            android:textColorHint="@color/hint_color"
-            app:layout_constraintEnd_toEndOf="@+id/editTextPhone"
-            app:layout_constraintHorizontal_bias="0.444"
-            app:layout_constraintStart_toStartOf="@+id/editTextPhone"
-            app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
-            tools:ignore="TextContrastCheck"
-            android:textStyle="bold"
-            android:backgroundTint="@color/black"/>
-
         <TextView
-            android:id="@+id/gender"
-            android:layout_width="97dp"
-            android:layout_height="33dp"
-            android:layout_marginTop="28dp"
-            android:autofillHints=""
-            android:text="@string/gender"
+            android:id="@+id/text33"
+            android:layout_width="63dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="16dp"
+            android:text="City"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="23sp"
@@ -195,11 +174,40 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/password_login" />
 
+        <Spinner
+            android:id="@+id/listCities"
+            android:layout_width="153dp"
+            android:layout_height="37dp"
+            android:layout_marginTop="8dp"
+            android:background="#FBD5D5"
+            android:entries="@array/city_list"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.492"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text33"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/gender"
+            android:layout_width="97dp"
+            android:layout_height="33dp"
+            android:layout_marginTop="40dp"
+            android:autofillHints=""
+            android:text="@string/gender"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="23sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.48"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/listCities" />
+
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -246,7 +254,7 @@
             android:id="@+id/listGrpBlood"
             android:layout_width="153dp"
             android:layout_height="37dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="16dp"
             android:background="#FBD5D5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.492"
@@ -258,7 +266,7 @@
             android:id="@+id/password_login"
             android:layout_width="287dp"
             android:layout_height="57dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:autofillHints=""
             android:backgroundTint="@color/black"
             android:ellipsize="start"
@@ -269,8 +277,9 @@
             android:textColorHint="@color/hint_color"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.524"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/address"
+            app:layout_constraintTop_toBottomOf="@+id/editTextPhone"
             tools:ignore="TextContrastCheck" />
 
         <androidx.appcompat.widget.AppCompatButton
