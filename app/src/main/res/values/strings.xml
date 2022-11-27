@@ -118,4 +118,16 @@
 
     <item name="srn_root_layout" type="id" />
 
+    <!-- onboarding part -->
+    <string name="title1">Title</string>
+    <string name="title2">Title</string>
+    <string name="title3">About AB-</string>
+    <string name="title4"> About B+</string>
+    <string name="description1">Opportunities knock the door sometimes, so don’t let it go and donate blood!</string>
+    <string name="description2">Blood Donation will cost you nothing, but it will save a life!</string>
+    <string name="description3">Never refuse to donate blood if you can, as you may be the next needy!</string>
+    <string name="description4">Sometimes money cannot save life but donated blood can!</string>
+    <string name="todo">TODO</string>
+
+
 </resources>

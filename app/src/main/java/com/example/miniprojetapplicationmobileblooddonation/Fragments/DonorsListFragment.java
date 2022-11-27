@@ -50,7 +50,7 @@ public class DonorsListFragment extends Fragment {
         DataBaseHelper db = new DataBaseHelper(getContext());
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        items = db.getDonors();;
+        items = db.getDonors();
         recyclerView.setAdapter(new DonorsAdapter(getContext(),items));
 
 
