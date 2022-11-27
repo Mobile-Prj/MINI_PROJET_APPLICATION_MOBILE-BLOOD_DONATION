@@ -93,7 +93,7 @@
     <string name="demanders_list">Demanders List</string>
     <string name="home">Home</string>
     <string name="floating_button">button for lauching request form</string>
-    <string name="edit_done">done</string>
+    <string name="edit_done">save</string>
 
     <string-array name="bloodGroups">
         <item>Group</item>

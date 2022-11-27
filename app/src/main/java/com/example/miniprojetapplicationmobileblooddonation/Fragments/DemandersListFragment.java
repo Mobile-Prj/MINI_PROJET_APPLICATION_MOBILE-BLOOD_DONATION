@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.database.Cursor;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +35,6 @@ public class DemandersListFragment extends Fragment {
     private List<DemanderItem> items;
     DataBaseHelper db;
     RecyclerView recyclerView;
-    //SwipeRefreshLayout swipeRef;
     String user_email;
 
     @Nullable
@@ -44,10 +42,7 @@ public class DemandersListFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_demanders_list, container, false);
-        //swipeRef= view.findViewById(R.id.swipeRefresh);
         floatingButton = view.findViewById(R.id.add_fab);
-
-
         return view;
     }
 
@@ -61,7 +56,6 @@ public class DemandersListFragment extends Fragment {
         }
         db = new DataBaseHelper(getContext());
         items= new ArrayList<>();
-        Toast.makeText(getContext(),"IN Demanders",Toast.LENGTH_LONG).show();
 
         recyclerView = view.findViewById(R.id.demander_list_recyleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -74,22 +68,7 @@ public class DemandersListFragment extends Fragment {
                 startActivity(intent);
             }
         });
-        /*swipeRef.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                /*val ft: FragmentTransaction = this.fragmentManager!!.beginTransaction()
-                ft.detach(this)
-                ft.attach(this)
-                ft.commit()
-            }
-        });*/
 
-        /*RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.demander_list_recyleview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        DemandersAdapter demandersAdapter = new DemandersAdapter(getContext(),items);
-        recyclerView.setAdapter(demandersAdapter);
-        demandersAdapter.notifyDataSetChanged();*/
     }
     @Override
     public void onResume() {
