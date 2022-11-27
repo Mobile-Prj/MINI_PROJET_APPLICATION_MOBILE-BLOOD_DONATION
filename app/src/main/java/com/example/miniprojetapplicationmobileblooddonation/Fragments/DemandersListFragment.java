@@ -34,24 +34,19 @@ public class DemandersListFragment extends Fragment {
 
     private FloatingActionButton floatingButton;
     private List<DemanderItem> items;
-    TextView title;
     DataBaseHelper db;
     RecyclerView recyclerView;
-    SwipeRefreshLayout swipeRef;
+    //SwipeRefreshLayout swipeRef;
+    String user_email;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_demanders_list, container, false);
-        swipeRef= view.findViewById(R.id.swipeRefresh);
+        //swipeRef= view.findViewById(R.id.swipeRefresh);
         floatingButton = view.findViewById(R.id.add_fab);
-        floatingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), FormActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
         return view;
     }
@@ -60,21 +55,34 @@ public class DemandersListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        dataInitialize();
+        // get the email from the Menu activity to perform requests
+        if(getArguments() != null){
+            user_email = getArguments().getString("user_email");
+        }
         db = new DataBaseHelper(getContext());
         items= new ArrayList<>();
-        recyclerView = (RecyclerView)view.findViewById(R.id.demander_list_recyleview);
+        Toast.makeText(getContext(),"IN Demanders",Toast.LENGTH_LONG).show();
+
+        recyclerView = view.findViewById(R.id.demander_list_recyleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         displayData();
-        swipeRef.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        floatingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), FormActivity.class);
+                intent.putExtra("user_email",user_email);
+                startActivity(intent);
+            }
+        });
+        /*swipeRef.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 /*val ft: FragmentTransaction = this.fragmentManager!!.beginTransaction()
                 ft.detach(this)
                 ft.attach(this)
-                ft.commit()*/
+                ft.commit()
             }
-        });
+        });*/
 
         /*RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.demander_list_recyleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -82,6 +90,13 @@ public class DemandersListFragment extends Fragment {
         DemandersAdapter demandersAdapter = new DemandersAdapter(getContext(),items);
         recyclerView.setAdapter(demandersAdapter);
         demandersAdapter.notifyDataSetChanged();*/
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        displayData();
+        getFragmentManager().beginTransaction().detach(this).attach(this).commit();
+
     }
     private void displayData(){
         Cursor c = db.getRequesters();
@@ -101,13 +116,13 @@ public class DemandersListFragment extends Fragment {
         }
     }
 
-    private void dataInitialize() {
+   /* private void dataInitialize() {
 
         items= new ArrayList<DemanderItem>();
         items.add( new DemanderItem("+6273890","FULL NAME","HOPITAL WXXXX","06/12/2022 on 6PM","AB+",R.drawable.icon));
         items.add( new DemanderItem("+6273890","FULL NAME","HOPITAL YYYYY","08/10/2022 on 9PM","O+",R.drawable.icon));
         items.add( new DemanderItem("+4989299","FULL NAME","HOPITAL ZZZZ","14/12/2022 on 10AM","A+",R.drawable.icon));
 
-    }
+    }*/
 
 }

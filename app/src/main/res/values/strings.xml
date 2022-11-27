@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MINI PROJET APPLICATION MOBILE (BLOOD DONATION)</string>
+    <string name="app_name">Save Lives</string>
     <string name="loading">Loader of the splash page</string>
     <string name="login_text">login</string>
     <string name="signUp_text">signUp</string>

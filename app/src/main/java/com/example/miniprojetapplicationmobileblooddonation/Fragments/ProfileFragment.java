@@ -45,7 +45,6 @@ public class ProfileFragment extends Fragment {
     Spinner bloodType, address, gender;
     String user_email;
     ArrayAdapter<CharSequence> bloodTpyeArrayAdapter, genderArrayAdapter, cityArrayAdapter;
-
     Bitmap imgProfileBitmap;
     RoundedDrawable roundedProfileImage;
 

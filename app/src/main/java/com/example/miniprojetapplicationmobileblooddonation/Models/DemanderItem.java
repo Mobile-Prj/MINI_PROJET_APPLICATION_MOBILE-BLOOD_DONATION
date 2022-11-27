@@ -14,6 +14,9 @@ public class DemanderItem {
         BloodCateg = bloodCateg;
         Image = image;
     }
+    public DemanderItem() {
+
+    }
 
     public String getBloodCateg() {
         return BloodCateg;

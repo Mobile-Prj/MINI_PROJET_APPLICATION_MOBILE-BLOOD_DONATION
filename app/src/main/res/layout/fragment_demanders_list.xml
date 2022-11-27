@@ -12,11 +12,7 @@
         android:orientation="vertical"
         tools:context=".list_demandeurs"
        >
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/swipeRefresh"
-        >
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/demander_list_recyleview"
             android:layout_width="match_parent"
@@ -27,7 +23,6 @@
 
 
         </androidx.recyclerview.widget.RecyclerView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </RelativeLayout>
 
 

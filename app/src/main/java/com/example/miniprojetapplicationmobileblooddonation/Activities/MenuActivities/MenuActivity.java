@@ -47,7 +47,6 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private Drawable[] screenIcons;
 
     private SlidingRootNav slidingRootNav;
-    Dialog dialog;
 
     Bundle bundle;
     String userEmail;
@@ -93,9 +92,7 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
         list.setAdapter(adapter);
         adapter.setSelected(POS_HOME);
 
-        dialog = new Dialog(this);
 
-        openFailDialog();
     }
 
     @Override
@@ -176,20 +173,6 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
         finish();
     }
 
-    private void openFailDialog() {
-        dialog.setContentView(R.layout.dialog_error_layout);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        //ImageView imgClose= dialog.findViewById(R.id.imageViewClose);
-        Button btnOk = dialog.findViewById(R.id.btn_Error);
-        btnOk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialog.dismiss();
-
-            }
-        });
-        dialog.show();
-    }
 
     @ColorInt
     private int color(@ColorRes int res) {

@@ -89,20 +89,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         else
             return false;
     }
-    public String getUsername(String username){
-        SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor=MyDB.rawQuery("select * from user where email= ?",new String[]{username});
-        cursor.moveToFirst();
-        return cursor.getString(0);
-    }
-    public Bitmap getImage(String username){
-        SQLiteDatabase MyDB = this.getWritableDatabase();
-        Cursor cursor=MyDB.rawQuery("select * from user where email= ?",new String[]{username});
-        cursor.moveToFirst();
-        byte[] bitmap=cursor.getBlob(1);
-        Bitmap image= BitmapFactory.decodeByteArray( bitmap,0,bitmap.length);
-        return image;
-    }
 
     public Cursor getRequesters(){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -112,14 +98,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     //Display list of donors
     public ArrayList<Donor> getDonors(){
-
         SQLiteDatabase db = getWritableDatabase();
         String query = "SELECT * FROM USER WHERE Isdonor  ";
         Cursor cursor = db.rawQuery(query, null);
         ArrayList<Donor> donors = new ArrayList<Donor>();
         while(cursor.moveToNext()){
             Donor donor = new Donor();
-            donor.setName(cursor.getString(2));
+            donor.setName(cursor.getString(1)+" "+cursor.getString(2));
             donor.setTitle(cursor.getString(7));
             donor.setCity(cursor.getString(5));
             donor.setPhone(cursor.getString(4));
@@ -181,6 +166,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return userProfile;
+
+    }
+
+    // get current user profile function
+    public String getUserName(String email){
+        String Fname = null;
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM USER WHERE email=?";
+        Cursor cursor = db.rawQuery(query, new String[]{email});
+
+        // get informations from the cursor
+        while(cursor.moveToNext()) {
+            Fname=cursor.getString(1)+" "+(cursor.getString(2));
+
+        }
+
+        cursor.close();
+        db.close();
+
+        return Fname;
 
     }
 

@@ -29,14 +29,16 @@ import android.widget.Toast;
 
 import com.example.miniprojetapplicationmobileblooddonation.Database.DataBaseHelper;
 import com.example.miniprojetapplicationmobileblooddonation.R;
+import com.vicmikhailau.maskededittext.MaskedEditText;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class SignUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    EditText fname,lname,mail,phone,add,password;
+    EditText fname,lname,mail,add,password;
     RadioGroup rg;
     Spinner listSpinner;
+    MaskedEditText phone;
     ImageView img;
     CheckBox donor;
     Button signup ,selectimg;
@@ -93,26 +95,32 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                 Toast.makeText(SignUpActivity.this ,"Please enter all the fields",Toast.LENGTH_SHORT).show();
 
             else {
-                String emailToText=mail.getText().toString();
-                if (!emailToText.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailToText).matches()) {
-                    Boolean checkuser = db.checkusername(email);
-                    if (!checkuser) {
-                        boolean insert = db.insertData(prenom, nom, email, num, addr, gender, BloodGrup, pass, getImage(img), don);
-                        if (insert) {
-                            Toast.makeText(SignUpActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                            startActivity(intent);
-                        } else {
-                            Toast.makeText(SignUpActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
-                        }
+                if(num.length()!=17)
+                    Toast.makeText(SignUpActivity.this ,"The Contact field should follow the format number",Toast.LENGTH_SHORT).show();
+                else{
+                    String emailToText=mail.getText().toString();
+                    if (!emailToText.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailToText).matches()) {
+                        Boolean checkuser = db.checkusername(email);
+                        if (!checkuser) {
+                            boolean insert = db.insertData(prenom, nom, email, num, addr, gender, BloodGrup, pass, getImage(img), don);
+                            if (insert) {
+                                Toast.makeText(SignUpActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(SignUpActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                            }
 
+                        }
+                        else{
+                            Toast.makeText(SignUpActivity.this, "Email already exists! please Sign in", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(this, "Enter valid Email address !", Toast.LENGTH_SHORT).show();
                     }
-                    else{
-                        Toast.makeText(SignUpActivity.this, "Email already exists! please Sign in", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    Toast.makeText(this, "Enter valid Email address !", Toast.LENGTH_SHORT).show();
+
                 }
+
 
             }
 

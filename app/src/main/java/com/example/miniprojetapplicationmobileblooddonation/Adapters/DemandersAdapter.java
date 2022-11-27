@@ -1,14 +1,28 @@
 package com.example.miniprojetapplicationmobileblooddonation.Adapters;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.miniprojetapplicationmobileblooddonation.Database.DataBaseHelper;
 import com.example.miniprojetapplicationmobileblooddonation.Models.DemanderItem;
+import com.example.miniprojetapplicationmobileblooddonation.Models.Donor;
 import com.example.miniprojetapplicationmobileblooddonation.R;
 
 import java.util.List;
@@ -17,7 +31,6 @@ public class DemandersAdapter extends RecyclerView.Adapter<DemandersHolder> {
 
     Context context;
     List<DemanderItem> items;
-
     public DemandersAdapter(Context context, List<DemanderItem> items) {
         this.context = context;
         this.items = items;
@@ -43,5 +56,6 @@ public class DemandersAdapter extends RecyclerView.Adapter<DemandersHolder> {
 
     @Override
     public int getItemCount() {return items.size(); }
+
 
 }
