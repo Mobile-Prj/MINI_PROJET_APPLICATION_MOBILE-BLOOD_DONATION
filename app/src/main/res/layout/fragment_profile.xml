@@ -4,11 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+       >
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/background_profile"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="#FFE3E3"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="0dp">
@@ -124,7 +128,8 @@
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textStyle="italic" />
+                android:textStyle="italic"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
         </LinearLayout>
 
@@ -245,10 +250,11 @@
         <EditText
             android:id="@+id/profile_firstName"
             android:layout_width="155dp"
-            android:layout_height="46dp"
+            android:layout_height="48dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name"
+            android:text="@string/name"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="25sp"
@@ -256,17 +262,19 @@
             app:layout_constraintBottom_toBottomOf="@+id/profile_lastName"
             app:layout_constraintEnd_toStartOf="@+id/profile_lastName"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <EditText
             android:id="@+id/profile_lastName"
             android:layout_width="159dp"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="40dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
             android:lineSpacingExtra="25sp"
-            android:text="Name"
+            android:text="@string/lastname"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="25sp"
@@ -275,5 +283,5 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView9" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
+    </ScrollView>
 </RelativeLayout>

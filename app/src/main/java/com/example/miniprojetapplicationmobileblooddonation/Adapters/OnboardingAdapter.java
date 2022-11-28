@@ -12,6 +12,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.miniprojetapplicationmobileblooddonation.R;
+/**
+ * Adaptateur de la page d'acceuil
+ */
 
 public class OnboardingAdapter extends PagerAdapter {
 
@@ -66,12 +69,9 @@ public class OnboardingAdapter extends PagerAdapter {
         View v = layoutInflater.inflate(R.layout.page,container,false);
 
         ImageView image = v.findViewById(R.id.image);
-        TextView title,description;
-        //title = v.findViewById(R.id.title);
+        TextView description;
         description = v.findViewById(R.id.description);
-
         image.setImageResource(images[position]);
-        //title.setText(titles[position]);
         description.setText(descriptions[position]);
 
         container.addView(v);

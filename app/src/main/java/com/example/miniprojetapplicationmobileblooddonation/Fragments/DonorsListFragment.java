@@ -27,21 +27,21 @@ public class DonorsListFragment extends Fragment {
 
     private List<Donor> items;
     Button btnSearch;
-    Spinner location,bloodGroop;
+    Spinner location,bloodGroup;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         return inflater.inflate(R.layout.fragment_donors_list, container, false);
     }
-
+    // Display List of donors
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         btnSearch= (Button) view.findViewById(R.id.btnSearch);
         location=(Spinner) view.findViewById(R.id.cityList);
-        bloodGroop=(Spinner) view.findViewById(R.id.BloodGroupList);
+        bloodGroup=(Spinner) view.findViewById(R.id.BloodGroupList);
         items=new ArrayList<>();
 
         RecyclerView recyclerView = (RecyclerView)view.findViewById(R.id.recyclerview);
@@ -52,10 +52,10 @@ public class DonorsListFragment extends Fragment {
         items = db.getDonors();
         recyclerView.setAdapter(new DonorsAdapter(getContext(),items));
 
-
+        // Search Donors
         btnSearch.setOnClickListener(view1 -> {
             String loc = location.getSelectedItem().toString();
-            String cat = bloodGroop.getSelectedItem().toString();
+            String cat = bloodGroup.getSelectedItem().toString();
             if(cat.equals("Group")){
                 Toast.makeText(getContext() ,"Please choose a Blood Group",Toast.LENGTH_SHORT).show();
 

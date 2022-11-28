@@ -35,6 +35,7 @@ public class HomeFragment extends Fragment {
 
         return view;
     }
+    // Display pages on the home page
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,8 +107,10 @@ public class HomeFragment extends Fragment {
             dots[pos].setTextSize(100);
         }
     }
+    // setting color
     @ColorInt
     private int color(@ColorRes int res) {
+
         return ContextCompat.getColor(getContext(), res);
     }
 

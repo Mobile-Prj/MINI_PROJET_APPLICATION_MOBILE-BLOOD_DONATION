@@ -106,11 +106,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ArrayList<Donor> donors = new ArrayList<Donor>();
         while(cursor.moveToNext()){
             Donor donor = new Donor();
-            donor.setName(cursor.getString(2));
+            donor.setName(cursor.getString(1)+" "+(cursor.getString(2)));
             donor.setTitle(cursor.getString(7));
             donor.setCity(cursor.getString(5));
             donor.setPhone(cursor.getString(4));
-            donor.setImage(R.drawable.ic_profile);
+            donor.setImage(R.drawable.ic_donor);
             donors.add(donor);
         }
         cursor.close();

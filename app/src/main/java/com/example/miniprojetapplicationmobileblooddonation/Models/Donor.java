@@ -1,12 +1,14 @@
 package com.example.miniprojetapplicationmobileblooddonation.Models;
 
 public class Donor {
-
+    // Attributes
     String title;
     String name;
     String phone;
     String city;
     int image;
+
+    // constructors
 
     public Donor(String title,String name, String phone,String city, int image) {
         this.title = title;
@@ -19,7 +21,7 @@ public class Donor {
     public Donor() {
 
     }
-
+    // Getters and setters
     public String getName() {
         return name;
     }
