@@ -1,11 +1,11 @@
-package slidingrootnav.util;
+package slidingnav.util;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.MotionEvent;
 import android.view.View;
 
-import slidingrootnav.SlidingRootNavLayout;
+import slidingnav.SlidingRootNavLayout;
 
 /**
  * Created by yarolegovich on 26.03.2017.

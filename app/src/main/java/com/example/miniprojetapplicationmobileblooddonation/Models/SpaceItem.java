@@ -6,10 +6,13 @@ import android.view.ViewGroup;
 
 import com.example.miniprojetapplicationmobileblooddonation.Adapters.DrawerAdapter;
 
-public class AnItem extends DrawerItem<AnItem.ViewHolder> {
+/**
+ * Créer un espace entre les elements du Drawer RecyclerView
+ */
+public class SpaceItem extends DrawerItem<SpaceItem.ViewHolder> {
     private int spaceDp;
 
-    public AnItem(int spaceDp) {
+    public SpaceItem(int spaceDp) {
         this.spaceDp = spaceDp;
     }
 

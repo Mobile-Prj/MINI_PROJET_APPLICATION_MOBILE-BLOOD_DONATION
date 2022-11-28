@@ -1,12 +1,8 @@
-package slidingrootnav.transform;
+package slidingnav.transform;
 
 import android.view.View;
 
 import java.util.List;
-
-/**
- * Created by yarolegovich on 25.03.2017.
- */
 
 public class CompositeTransformation implements RootTransformation {
 

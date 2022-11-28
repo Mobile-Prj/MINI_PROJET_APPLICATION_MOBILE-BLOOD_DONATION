@@ -1,4 +1,4 @@
-package slidingrootnav.util;
+package slidingnav.util;
 
 /**
  * Created by yarolegovich on 25.03.2017.

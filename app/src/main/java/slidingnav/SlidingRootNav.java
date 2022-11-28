@@ -1,8 +1,5 @@
-package slidingrootnav;
+package slidingnav;
 
-/**
- * Created by yarolegovich on 25.03.2017.
- */
 
 public interface SlidingRootNav {
 

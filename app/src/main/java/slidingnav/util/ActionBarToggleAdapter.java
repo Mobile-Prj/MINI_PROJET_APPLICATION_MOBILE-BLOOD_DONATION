@@ -1,10 +1,10 @@
-package slidingrootnav.util;
+package slidingnav.util;
 
 import android.content.Context;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import slidingrootnav.SlidingRootNavLayout;
+import slidingnav.SlidingRootNavLayout;
 
 /**
  * Created by yarolegovich on 26.03.2017.

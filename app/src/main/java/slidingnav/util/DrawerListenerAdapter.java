@@ -1,11 +1,11 @@
-package slidingrootnav.util;
+package slidingnav.util;
 
 import android.view.View;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import slidingrootnav.callback.DragListener;
-import slidingrootnav.callback.DragStateListener;
+import slidingnav.callback.DragListener;
+import slidingnav.callback.DragStateListener;
 
 /**
  * Created by yarolegovich on 26.03.2017.

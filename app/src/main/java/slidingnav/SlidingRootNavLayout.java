@@ -1,4 +1,4 @@
-package slidingrootnav;
+package slidingnav;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -18,13 +18,10 @@ import androidx.customview.widget.ViewDragHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-import slidingrootnav.callback.DragListener;
-import slidingrootnav.callback.DragStateListener;
-import slidingrootnav.transform.RootTransformation;
+import slidingnav.callback.DragListener;
+import slidingnav.callback.DragStateListener;
+import slidingnav.transform.RootTransformation;
 
-/**
- * Created by yarolegovich on 24.03.2017.
- */
 public class SlidingRootNavLayout extends FrameLayout implements SlidingRootNav {
 
     private static final String EXTRA_IS_OPENED = "extra_is_opened";

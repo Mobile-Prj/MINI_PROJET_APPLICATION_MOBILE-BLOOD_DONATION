@@ -13,6 +13,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Adapter pour le Menu de Navigation
+ */
+
 public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder>{
     private List<DrawerItem> items;
     private Map<Class<? extends DrawerItem>, Integer> viewTypes;

@@ -10,6 +10,9 @@ import android.widget.TextView;
 import com.example.miniprojetapplicationmobileblooddonation.Adapters.DrawerAdapter;
 import com.example.miniprojetapplicationmobileblooddonation.R;
 
+/**
+ * Adapter pour un element du Menu de Navigation
+ */
 public class SimpleItem extends DrawerItem<SimpleItem.ViewHolder>{
 
     private int selectedItemIconTint;

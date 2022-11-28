@@ -1,4 +1,5 @@
 <resources>
+    <!-- Various Strings -->
     <string name="app_name">Save Lives</string>
     <string name="loading">Loader of the splash page</string>
     <string name="login_text">login</string>
@@ -20,6 +21,10 @@
     <string name="blood_type">Blood type</string>
     <string name="select_a_picture">Select a picture</string>
     <string name="camera_img_description">Image boutton pour la selection d\'une image</string>
+    <string name="edit_done">save</string>
+    <string name="success">Success !</string>
+    <string name="your_request_have_been_successfully_added">Your request have been successfully added !</string>
+    <string name="okay">OKAY</string>
 
     <!-- profile part -->
     <string name="user_name">Sara Chakir</string>
@@ -38,17 +43,10 @@
     <string name="choose_your_city">Choose your City:</string>
     <string name="search">Search</string>
     <string name="choose_blood_group">Choose Blood Group:</string>
-    <string-array name="Blood_Group">
-        <item>A+</item>
-        <item>A-</item>
-        <item>B+</item>
-        <item>B-</item>
-        <item>AB+</item>
-        <item>AB-</item>
-        <item>O+</item>
-        <item>O-</item>
-    </string-array>
+
+    <!-- Spinner for Cities -->
     <string-array name="city_list">
+        <item>City</item>
         <item>Marrakech</item>
         <item>Rabat</item>
         <item>Safi</item>
@@ -60,11 +58,26 @@
 
     </string-array>
 
+    <!-- Spinner for Blood Groups -->
+    <string-array name="bloodGroups">
+        <item>Group</item>
+        <item>A+</item>
+        <item>A-</item>
+        <item>B+</item>
+        <item>B-</item>
+        <item>AB+</item>
+        <item>AB-</item>
+        <item>O+</item>
+        <item>O-</item>
+    </string-array>
+
+    <!-- Spinner for genders -->
     <string-array name="genders">
         <item>Male</item>
         <item>Female</item>
     </string-array>
 
+    <!-- Menu Titles -->
     <string-array name="ld_activityScreenTitles">
         <item></item>
         <item>Home</item>
@@ -75,6 +88,7 @@
         <item>Log Out</item>
     </string-array>
 
+    <!-- Menu Icons -->
     <string-array name="ld_activityScreenIcons">
         <item>@drawable/ic_baseline_close_24</item>
         <item>@drawable/ic_baseline_home_24</item>
@@ -93,32 +107,8 @@
     <string name="demanders_list">Demanders List</string>
     <string name="home">Home</string>
     <string name="floating_button">button for lauching request form</string>
-    <string name="edit_done">save</string>
 
-    <string-array name="bloodGroups">
-        <item>Group</item>
-        <item>A+</item>
-        <item>A-</item>
-        <item>B+</item>
-        <item>B-</item>
-        <item>AB+</item>
-        <item>AB-</item>
-        <item>O+</item>
-        <item>O-</item>
-    </string-array>
-
-    <string name="srn_drawer_open">Open</string>
-    <string name="srn_drawer_close">Close</string>
-
-    <string name="srn_ex_no_menu_view">No view for menu provided. You must either call .withMenuView(View) or pass a valid resource id to .withMenuLayout(int)</string>
-    <string name="srn_ex_bad_content_view">Your content view must contain exactly one child. Make sure you call inject() after setContentView().</string>
-    <string name="success">Success !</string>
-    <string name="your_request_have_been_successfully_added">Your request have been successfully added !</string>
-    <string name="okay">OKAY</string>
-
-    <item name="srn_root_layout" type="id" />
-
-    <!-- onboarding part -->
+    <!-- Onboarding part -->
     <string name="title1">Title</string>
     <string name="title2">Title</string>
     <string name="title3">About AB-</string>
@@ -128,6 +118,16 @@
     <string name="description3">Never refuse to donate blood if you can, as you may be the next needy!</string>
     <string name="description4">Sometimes money cannot save life but donated blood can!</string>
     <string name="todo">TODO</string>
+
+
+    <!-- Others -->
+    <string name="srn_drawer_open">Open</string>
+    <string name="srn_drawer_close">Close</string>
+    <string name="srn_ex_no_menu_view">No view for menu provided. You must either call .withMenuView(View) or pass a valid resource id to .withMenuLayout(int)</string>
+    <string name="srn_ex_bad_content_view">Your content view must contain exactly one child. Make sure you call inject() after setContentView().</string>
+    <item name="srn_root_layout" type="id" />
+
+
 
 
 </resources>

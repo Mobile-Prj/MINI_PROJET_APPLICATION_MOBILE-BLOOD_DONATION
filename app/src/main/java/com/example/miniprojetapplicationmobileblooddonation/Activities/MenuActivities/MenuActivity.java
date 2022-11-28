@@ -5,37 +5,35 @@ import androidx.annotation.ColorRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.res.TypedArray;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
 
 import com.example.miniprojetapplicationmobileblooddonation.Adapters.DrawerAdapter;
 import com.example.miniprojetapplicationmobileblooddonation.Fragments.DemandersListFragment;
 import com.example.miniprojetapplicationmobileblooddonation.Fragments.DonorsListFragment;
 import com.example.miniprojetapplicationmobileblooddonation.Fragments.HomeFragment;
 import com.example.miniprojetapplicationmobileblooddonation.Fragments.ProfileFragment;
-import com.example.miniprojetapplicationmobileblooddonation.Models.AnItem;
+import com.example.miniprojetapplicationmobileblooddonation.Models.SpaceItem;
 import com.example.miniprojetapplicationmobileblooddonation.Models.DrawerItem;
 import com.example.miniprojetapplicationmobileblooddonation.Models.SimpleItem;
 import com.example.miniprojetapplicationmobileblooddonation.R;
 
 import java.util.Arrays;
 
-import slidingrootnav.SlidingRootNav;
-import slidingrootnav.SlidingRootNavBuilder;
+import slidingnav.SlidingRootNav;
+import slidingnav.SlidingRootNavBuilder;
 
+/**
+ * Menu Activity pour le Menu de Navigation
+ */
 public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener{
+    //instantiation des positions des elements du Menu
     private static final int POS_CLOSE = 0;
     private static final int POS_HOME = 1;
     private static final int POS_PROFILE= 2;
@@ -43,13 +41,13 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private static final int POS_REQUESTERSLIST= 4;
     private static final int POS_LOGOUT = 6;
 
+    //instantiation des titres et icônes du Menu
     private String[] screenTitles;
     private Drawable[] screenIcons;
 
+    //Autres Décalarations
     private SlidingRootNav slidingRootNav;
-
     Bundle bundle;
-    String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,9 +56,10 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // to get data passed from login activity
+        // Récupérer les données passées du login activity
         bundle = getIntent().getExtras();
 
+        //instantiation du SlidingNavigation drawer
         slidingRootNav = new SlidingRootNavBuilder(this)
                 .withDragDistance(180)
                 .withRootViewScale(0.75f)
@@ -72,19 +71,23 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
                 .withMenuLayout(R.layout.drawer_menu)
                 .inject();
 
+        //Charger les icônes et titres
         screenIcons = loadScreenIcons();
         screenTitles = loadScreenTitles();
 
+        //instantiation de l'Adaptateur
         DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
                 createItemFor(POS_CLOSE),
                 createItemFor(POS_HOME).setChecked(true),
                 createItemFor(POS_PROFILE),
                 createItemFor(POS_REQUESTERSLIST),
                 createItemFor(POS_DONORSLIST),
-                new AnItem(260),
+                new SpaceItem(260),
                 createItemFor(POS_LOGOUT)));
         adapter.setListener(this);
 
+
+        //instantiation du RecyclerView
         @SuppressLint({"MissingInflatedId", "LocalSuppress"})
         RecyclerView list = findViewById(R.id.list);
         list.setNestedScrollingEnabled(false);
@@ -95,6 +98,7 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
     }
 
+    //Changment du fragment actuel selon la position selectionnée
     @Override
     public void onItemSelected(int position) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -131,17 +135,10 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
         slidingRootNav.closeMenu();
         transaction.addToBackStack(null);
         transaction.commit();
-        /*Fragment selectedScreen = CenteredTextFragment.createFor(screenTitles[position]);
-        showFragment(selectedScreen);*/
+
     }
 
-    private void showFragment(Fragment fragment) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.container, fragment)
-                .commit();
-    }
-
-    //set color on selected Toolbar
+    //Fixer les couleurs des textes et icônes
     @SuppressWarnings("rawtypes")
     private DrawerItem createItemFor(int position) {
         return new SimpleItem(screenIcons[position], screenTitles[position])
@@ -151,10 +148,12 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
                 .withSelectedTextTint(color(R.color.pink));
     }
 
+    //fonction pour charger les titres des elements du Menu
     private String[] loadScreenTitles() {
         return getResources().getStringArray(R.array.ld_activityScreenTitles);
     }
 
+    //fonction pour charger les icônes des elements du Menu
     private Drawable[] loadScreenIcons() {
         TypedArray ta = getResources().obtainTypedArray(R.array.ld_activityScreenIcons);
         Drawable[] icons = new Drawable[ta.length()];
@@ -173,9 +172,11 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
         finish();
     }
 
-
+    //Récupérer les couleurs
     @ColorInt
     private int color(@ColorRes int res) {
         return ContextCompat.getColor(this, res);
     }
+
+
 }

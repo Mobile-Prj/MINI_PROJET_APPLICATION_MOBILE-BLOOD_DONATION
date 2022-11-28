@@ -27,6 +27,9 @@ import com.example.miniprojetapplicationmobileblooddonation.R;
 
 import java.util.List;
 
+/**
+ * Adaptateur des demandeurs
+ */
 public class DemandersAdapter extends RecyclerView.Adapter<DemandersHolder> {
 
     Context context;

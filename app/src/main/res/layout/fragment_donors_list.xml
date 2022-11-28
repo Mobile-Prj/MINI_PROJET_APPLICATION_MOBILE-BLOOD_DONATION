@@ -39,7 +39,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/donors_list"
-                android:entries="@array/Blood_Group"
+                android:entries="@array/bloodGroups"
                 android:inputType="text"
                 android:theme="@style/Spinner"
 

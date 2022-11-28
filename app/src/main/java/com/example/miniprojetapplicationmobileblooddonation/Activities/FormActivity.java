@@ -50,6 +50,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ * Form Activity pour le formulaire de Soumission de demande de sang
+ */
 public class FormActivity extends AppCompatActivity {
     TextView title;
     MaskedEditText Contact;
@@ -63,12 +66,8 @@ public class FormActivity extends AppCompatActivity {
     private String date;
     Dialog dialog;
     private List<DemanderItem> demanders;
-    RecyclerView rvItems;
     DemanderItem req;
-    RecyclerView.Adapter D_adapter;
-    RecyclerView.LayoutManager manager;
     DemandersListFragment f;
-
     String user_email,Fname;
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
@@ -76,7 +75,6 @@ public class FormActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_form);
-        // get the email from the Menu activity to perform requests
 
         db = new DataBaseHelper(this);
         btnInsert=findViewById(R.id.postbtn);
@@ -88,15 +86,18 @@ public class FormActivity extends AppCompatActivity {
         title.setText("New Request");
         f = new DemandersListFragment();
         demanders = new ArrayList<>();
-        //récupération des données de l'intent
+        /*
+        récupération des données de l'intent
+         */
         bd=getIntent().getExtras();
         if(bd!=null){
             user_email=bd.getString("user_email");
 
         }
-        // get the user profile
+        /*
+        get the user name
+         */
         Fname = db.getUserName(user_email);
-        Log.d("Frag :", ""+Fname+" ET "+user_email);
 
         btnInsert.setOnClickListener(view -> {
             String LocationTXT= Cities_listSpinner.getSelectedItem().toString();
@@ -109,13 +110,13 @@ public class FormActivity extends AppCompatActivity {
                 Toast.makeText(FormActivity.this ,"The Contact field should follow the format number",Toast.LENGTH_SHORT).show();
             else if(BloodCateg.equals("Group"))
                 Toast.makeText(FormActivity.this ,"Please choose a blood group ",Toast.LENGTH_SHORT).show();
+            else if(LocationTXT.equals("City"))
+                Toast.makeText(FormActivity.this ,"Please choose a City ",Toast.LENGTH_SHORT).show();
             else {
                 boolean CheckInsertedData = db.insertRequester(Fname,ContactMasked,date,LocationTXT,BloodCateg);
                 req = new DemanderItem(Fname,ContactMasked,date,LocationTXT,BloodCateg,R.drawable.icon);
                 if(CheckInsertedData){
-                   // Refresh();
                     openSuccessDialog();
-                    //InsertItem(demanders.size(), req);
                 }
                 else
                     openFailDialog();

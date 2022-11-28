@@ -1,7 +1,6 @@
 package com.example.miniprojetapplicationmobileblooddonation.Models;
 
 public class DemanderItem {
-    //PUT DATA
 
     String Contact,RequestedBy,Adress,DateTime,BloodCateg;
     int Image;

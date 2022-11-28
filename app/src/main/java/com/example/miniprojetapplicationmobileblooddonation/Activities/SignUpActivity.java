@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -47,12 +50,14 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     Spinner listBloodGroup;
     ArrayAdapter<CharSequence> arrayAdapter;
     DataBaseHelper db;
-    int SELECT_PICTURE = 200;
+    //int SELECT_PICTURE = 200;
+    Dialog dialog;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        dialog = new Dialog(this);
 
         appTitle = findViewById(R.id.app_title);
         listBloodGroup = findViewById(R.id.listGrpBlood);
@@ -91,7 +96,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
             else gender="Male";
             Boolean don= Boolean.valueOf(donor.getText().toString());
 
-            if(prenom.equals("")||nom.equals("")||email.equals("")||num.equals("")|| pass.equals("")||BloodGrup.equals("Groupe"))
+            if(prenom.equals("")||nom.equals("")||email.equals("")||num.equals("")|| pass.equals("")||BloodGrup.equals("Group")||addr.equals("City"))
                 Toast.makeText(SignUpActivity.this ,"Please enter all the fields",Toast.LENGTH_SHORT).show();
 
             else {
@@ -104,11 +109,9 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                         if (!checkuser) {
                             boolean insert = db.insertData(prenom, nom, email, num, addr, gender, BloodGrup, pass, getImage(img), don);
                             if (insert) {
-                                Toast.makeText(SignUpActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                startActivity(intent);
+                               openSuccessDialog();
                             } else {
-                                Toast.makeText(SignUpActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                                openFailDialog();
                             }
 
                         }
@@ -179,5 +182,37 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+    private void openFailDialog() {
+        dialog.setContentView(R.layout.failed_signup_layout);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button btnOk = dialog.findViewById(R.id.btn_Error);
+
+        btnOk.setOnClickListener(view -> {
+            dialog.dismiss();
+            finish();
+            overridePendingTransition(0, 0);
+            startActivity(getIntent());
+            overridePendingTransition(0, 0);
+        });
+
+        dialog.show();
+    }
+    private void openSuccessDialog() {
+        dialog.setContentView(R.layout.successfull_signup_layout);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button btnOk = dialog.findViewById(R.id.btn_Success);
+
+        btnOk.setOnClickListener(view -> {
+            dialog.dismiss();
+            finish();
+            overridePendingTransition(0, 0);
+            startActivity(getIntent());
+            overridePendingTransition(0, 0);
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+        });
+
+        dialog.show();
     }
 }

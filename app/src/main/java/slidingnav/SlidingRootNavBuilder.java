@@ -1,4 +1,4 @@
-package slidingrootnav;
+package slidingnav;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -19,20 +19,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import slidingrootnav.callback.DragListener;
-import slidingrootnav.callback.DragStateListener;
-import slidingrootnav.transform.CompositeTransformation;
-import slidingrootnav.transform.ElevationTransformation;
-import slidingrootnav.transform.RootTransformation;
-import slidingrootnav.transform.ScaleTransformation;
-import slidingrootnav.transform.YTranslationTransformation;
-import slidingrootnav.util.ActionBarToggleAdapter;
-import slidingrootnav.util.DrawerListenerAdapter;
-import slidingrootnav.util.HiddenMenuClickConsumer;
-
-/**
- * Created by yarolegovich on 24.03.2017.
- */
+import slidingnav.callback.DragListener;
+import slidingnav.callback.DragStateListener;
+import slidingnav.transform.CompositeTransformation;
+import slidingnav.transform.ElevationTransformation;
+import slidingnav.transform.RootTransformation;
+import slidingnav.transform.ScaleTransformation;
+import slidingnav.transform.YTranslationTransformation;
+import slidingnav.util.ActionBarToggleAdapter;
+import slidingnav.util.DrawerListenerAdapter;
+import slidingnav.util.HiddenMenuClickConsumer;
 
 public class SlidingRootNavBuilder {
 

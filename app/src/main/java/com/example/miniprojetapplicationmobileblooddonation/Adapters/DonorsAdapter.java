@@ -24,6 +24,9 @@ import com.example.miniprojetapplicationmobileblooddonation.Models.DemanderItem;
 import com.example.miniprojetapplicationmobileblooddonation.Models.Donor;
 import com.example.miniprojetapplicationmobileblooddonation.R;
 
+/**
+ * Adaptateur des donneurs
+ */
 public class DonorsAdapter extends RecyclerView.Adapter<DonorsAdapter.DonorsHolder> {
     Context context;
     List<Donor> items;

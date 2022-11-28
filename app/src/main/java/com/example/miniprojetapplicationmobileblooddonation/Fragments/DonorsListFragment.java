@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.miniprojetapplicationmobileblooddonation.Activities.SignUpActivity;
 import com.example.miniprojetapplicationmobileblooddonation.Adapters.DonorsAdapter;
 import com.example.miniprojetapplicationmobileblooddonation.Database.DataBaseHelper;
 import com.example.miniprojetapplicationmobileblooddonation.Models.Donor;
@@ -30,9 +32,6 @@ public class DonorsListFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        /*View rootView = inflater.inflate(R.layout.fragment_donors_list, container, false);
-
-         */
         return inflater.inflate(R.layout.fragment_donors_list, container, false);
     }
 
@@ -54,14 +53,21 @@ public class DonorsListFragment extends Fragment {
         recyclerView.setAdapter(new DonorsAdapter(getContext(),items));
 
 
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String loc = location.getSelectedItem().toString();
-                String cat = bloodGroop.getSelectedItem().toString();
+        btnSearch.setOnClickListener(view1 -> {
+            String loc = location.getSelectedItem().toString();
+            String cat = bloodGroop.getSelectedItem().toString();
+            if(cat.equals("Group")){
+                Toast.makeText(getContext() ,"Please choose a Blood Group",Toast.LENGTH_SHORT).show();
+
+            }
+            else if(loc.equals("City"))
+                Toast.makeText(getContext() ,"Please choose a City",Toast.LENGTH_SHORT).show();
+
+            else {
                 items = db.getSearchedDonors(loc,cat);
                 recyclerView.setAdapter(new DonorsAdapter(getContext(),items));
             }
+
         });
 
 

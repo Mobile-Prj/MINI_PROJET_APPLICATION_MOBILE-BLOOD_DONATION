@@ -1,13 +1,9 @@
-package slidingrootnav.transform;
+package slidingnav.transform;
 
 import android.view.View;
 
-import slidingrootnav.util.SideNavUtils;
+import slidingnav.util.SideNavUtils;
 
-
-/**
- * Created by yarolegovich on 25.03.2017.
- */
 
 public class YTranslationTransformation implements RootTransformation {
 

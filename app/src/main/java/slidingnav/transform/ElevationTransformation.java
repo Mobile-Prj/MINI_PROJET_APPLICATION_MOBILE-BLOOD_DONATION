@@ -1,12 +1,8 @@
-package slidingrootnav.transform;
+package slidingnav.transform;
 
 import android.os.Build;
 import android.view.View;
-import slidingrootnav.util.SideNavUtils;
-
-/**
- * Created by yarolegovich on 25.03.2017.
- */
+import slidingnav.util.SideNavUtils;
 
 public class ElevationTransformation implements RootTransformation {
 

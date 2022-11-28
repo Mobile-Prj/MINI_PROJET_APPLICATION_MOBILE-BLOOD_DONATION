@@ -1,10 +1,10 @@
 package com.example.miniprojetapplicationmobileblooddonation.Fragments;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -25,7 +25,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.example.miniprojetapplicationmobileblooddonation.Database.DataBaseHelper;
 import com.example.miniprojetapplicationmobileblooddonation.Models.UserProfile;
 import com.example.miniprojetapplicationmobileblooddonation.R;
@@ -47,6 +46,8 @@ public class ProfileFragment extends Fragment {
     ArrayAdapter<CharSequence> bloodTpyeArrayAdapter, genderArrayAdapter, cityArrayAdapter;
     Bitmap imgProfileBitmap;
     RoundedDrawable roundedProfileImage;
+    Boolean isClicked,leave;
+    Dialog dialog;
 
     @Nullable
     @Override
@@ -58,25 +59,17 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        isClicked=false;
+        leave=true;
+        dialog = new Dialog(getContext());
+
+
         // get the email from the Menu activity to perform requests
         if(getArguments() != null){
             user_email = getArguments().getString("user_email");
         }
 
         DataBaseHelper dataBaseHelper = new DataBaseHelper(getContext());
-        /*userProfile = new UserProfile(
-                null,
-                "Frederic",
-                "FAYA",
-                "fredericfaya@gmail.com",
-                "+212638743853",
-                "my adresse",
-                "Male",
-                "O+",
-                true
-        );
-
-         */
 
         // get the user profile
         userProfile = dataBaseHelper.getUserProfile(user_email);
@@ -121,56 +114,57 @@ public class ProfileFragment extends Fragment {
         profileImage.setImageBitmap(imgProfileBitmap);
 
         enable(false);
+        editButton.setOnClickListener(view1 -> {
+            if(editButton.getText().toString().equals("edit")){
+                isClicked=true;
+                // if the edit button is clicked
+                // change the edit button to done
+                editButton.setText(R.string.edit_done);
+                editButton.setBackgroundTintList(getContext().getResources().getColorStateList(R.color.radio_blue));
 
-
-        editButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(editButton.getText().toString().equals("edit")){
-                    // if the edit button is clicked
-                    // change the edit button to done
-                    editButton.setText(R.string.edit_done);
-                    // set the editText editable to change values
-                    enable(true);
-                    profileImage.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            imageChooser();
-                        }
-                    });
-                }else{
-
-                    // get the new values of texts
-                    userProfile.setFirstName(firstName.getText().toString());
-                    userProfile.setLastName(lastName.getText().toString());
-                    userProfile.setPhone(phone.getText().toString());
-                    userProfile.setAddress(address.getSelectedItem().toString());
-                    userProfile.setGender(gender.getSelectedItem().toString());
-                    userProfile.setBloodType(bloodType.getSelectedItem().toString());
-                    userProfile.setDonor(isDonor.isChecked());
-
-                    // convert the image to bipmap and then use the bipmap to get roundedImage
-                    profileImage.setDrawingCacheEnabled(true);
-                    imgProfileBitmap = profileImage.getDrawingCache();
-                    roundedProfileImage = RoundedDrawable.fromBitmap(imgProfileBitmap);
-                    userProfile.setUserImage(getImage(roundedProfileImage));
-
-                    boolean updated = dataBaseHelper.updateUserProfile(userProfile);
-
-                    if(updated){
-                        editButton.setText(R.string.edit_text);
-                        enable(false);
-                        Toast.makeText(getContext(),"Profile Updated successfully !",Toast.LENGTH_LONG).show();
-                    }else{
-                        Toast.makeText(getContext(),"Update profile failed !",Toast.LENGTH_LONG).show();
+                // set the editText editable to change values
+                enable(true);
+                profileImage.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view1) {
+                        imageChooser();
                     }
+                });
+            }else{
+                isClicked=false;
+                editButton.setBackgroundTintList(getContext().getResources().getColorStateList(R.color.primary_color));
 
+                // get the new values of texts
+                userProfile.setFirstName(firstName.getText().toString());
+                userProfile.setLastName(lastName.getText().toString());
+                userProfile.setPhone(phone.getText().toString());
+                userProfile.setAddress(address.getSelectedItem().toString());
+                userProfile.setGender(gender.getSelectedItem().toString());
+                userProfile.setBloodType(bloodType.getSelectedItem().toString());
+                userProfile.setDonor(isDonor.isChecked());
+
+                // convert the image to bipmap and then use the bipmap to get roundedImage
+                profileImage.setDrawingCacheEnabled(true);
+                imgProfileBitmap = profileImage.getDrawingCache();
+                roundedProfileImage = RoundedDrawable.fromBitmap(imgProfileBitmap);
+                userProfile.setUserImage(getImage(roundedProfileImage));
+
+                boolean updated = dataBaseHelper.updateUserProfile(userProfile);
+
+                if(updated){
+                    editButton.setText(R.string.edit_text);
+                    enable(false);
+                    Toast.makeText(getContext(),"Profile Updated successfully !",Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(getContext(),"Update profile failed !",Toast.LENGTH_LONG).show();
                 }
 
             }
+
         });
 
     }
+
 
     private void enable(boolean enabled){
         phone.setEnabled(enabled);
@@ -227,4 +221,6 @@ public class ProfileFragment extends Fragment {
                     }
                 }
             });
+
+
 }

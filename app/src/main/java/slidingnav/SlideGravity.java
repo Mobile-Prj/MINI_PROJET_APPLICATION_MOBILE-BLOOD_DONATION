@@ -1,11 +1,7 @@
-package slidingrootnav;
+package slidingnav;
 
 
 import androidx.customview.widget.ViewDragHelper;
-
-/**
- * Created by yarolegovich on 25.03.2017.
- */
 
 public enum SlideGravity {
 

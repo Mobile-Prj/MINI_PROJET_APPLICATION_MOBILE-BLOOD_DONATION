@@ -1,8 +1,4 @@
-package slidingrootnav.callback;
-
-/**
- * Created by yarolegovich on 25.03.2017.
- */
+package slidingnav.callback;
 
 public interface DragStateListener {
 

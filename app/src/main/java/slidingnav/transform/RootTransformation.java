@@ -1,10 +1,6 @@
-package slidingrootnav.transform;
+package slidingnav.transform;
 
 import android.view.View;
-
-/**
- * Created by yarolegovich on 25.03.2017.
- */
 
 public interface RootTransformation {
 
