@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         login=(Button) findViewById(R.id.login_button);
         fpass=(TextView) findViewById(R.id.reset_pwd);
         db=new DataBaseHelper(this);
-
+        //Forgot Password
         fpass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
+        //login button
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

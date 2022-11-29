@@ -89,7 +89,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         selectimg=findViewById(R.id.picture_title);
 
         img.setOnClickListener(view -> imageChooser());
-
+        //signup button
         signup.setOnClickListener(view -> {
             String gender;
             String prenom=fname.getText().toString();
@@ -136,13 +136,14 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
         });
     }
+    // convert the image to bipmap and then use the bipmap to get roundedImage
     private  byte[] Convert_ToBipmap(ImageView img){
-        // convert the image to bipmap and then use the bipmap to get roundedImage
         img.setDrawingCacheEnabled(true);
         imgProfileBitmap = img.getDrawingCache();
         roundedProfileImage = RoundedDrawable.fromBitmap(imgProfileBitmap);
         return getImage(roundedProfileImage);
     }
+    //get image
     private byte[] getImage(RoundedDrawable img) {
         byte[] image = new byte[0];
         if(isImageSelected) {
@@ -169,7 +170,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         return  image;
     }
 
-
+    //choose image
     private void imageChooser()
     {
         Intent i = new Intent();
@@ -178,7 +179,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
         launchSomeActivity.launch(i);
     }
-
+    //import image from mediastore
     ActivityResultLauncher<Intent> launchSomeActivity
             = registerForActivityResult(
             new ActivityResultContracts
@@ -217,6 +218,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+    //To Open fail Dialog (Popup)
     private void openFailDialog() {
         dialog.setContentView(R.layout.failed_signup_layout);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -232,6 +234,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
         dialog.show();
     }
+    //To Open Success Dialog (Popup)
     private void openSuccessDialog() {
         dialog.setContentView(R.layout.successfull_signup_layout);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
