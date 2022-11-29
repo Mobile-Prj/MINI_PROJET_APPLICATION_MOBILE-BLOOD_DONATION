@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     public DataBaseHelper(@Nullable Context context) {
-        super(context, "BloodDonationDBF", null, 1);
+        super(context, "BloodDonationDBFinal", null, 1);
     }
 
     @Override
