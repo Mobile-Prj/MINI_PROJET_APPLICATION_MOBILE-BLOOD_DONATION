@@ -56,7 +56,7 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * Form Activity pour le formulaire de Soumission de demande de sang
+ * Form Activity for the Blood Request Submission Form
  */
 public class FormActivity extends AppCompatActivity {
     TextView title;
@@ -93,7 +93,7 @@ public class FormActivity extends AppCompatActivity {
         f = new DemandersListFragment();
         demanders = new ArrayList<>();
         /*
-        récupération des données de l'intent
+        Retrieving data from the intent
          */
         bd=getIntent().getExtras();
         if(bd!=null){
@@ -101,7 +101,7 @@ public class FormActivity extends AppCompatActivity {
 
         }
         /*
-        get the user name et image
+        Get the user name and image
          */
         Fname = db.getUserName(user_email);
 

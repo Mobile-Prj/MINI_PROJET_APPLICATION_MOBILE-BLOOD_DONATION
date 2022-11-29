@@ -57,7 +57,7 @@
                 android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="2dp"
                 android:background="#FAFFFFFF"
                 android:gravity="center"

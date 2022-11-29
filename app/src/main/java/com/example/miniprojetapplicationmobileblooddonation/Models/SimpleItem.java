@@ -11,7 +11,7 @@ import com.example.miniprojetapplicationmobileblooddonation.Adapters.DrawerAdapt
 import com.example.miniprojetapplicationmobileblooddonation.R;
 
 /**
- * Adapter pour un element du Menu de Navigation
+ * Adapt for a Navigation Menu element
  */
 public class SimpleItem extends DrawerItem<SimpleItem.ViewHolder>{
 

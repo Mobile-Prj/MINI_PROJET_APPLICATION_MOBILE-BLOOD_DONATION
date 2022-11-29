@@ -44,6 +44,7 @@
     <string name="search">Search</string>
     <string name="choose_blood_group">Choose Blood Group:</string>
 
+
     <!-- Spinner for Cities -->
     <string-array name="city_list">
         <item>City</item>
@@ -55,9 +56,18 @@
         <item>Tanger</item>
         <item>Fes</item>
         <item>Meknes</item>
+        <item>Agadir</item>
+        <item>Essaouira</item>
+        <item>Chefchaouen</item>
+        <item>Tetouan</item>
+        <item>Ifrane</item>
+        <item>Temara</item>
+        <item>Laayoune</item>
+        <item>Dakhla</item>
+        <item>Zagoura</item>
+        <item>Tata</item>
 
     </string-array>
-
     <!-- Spinner for Blood Groups -->
     <string-array name="bloodGroups">
         <item>Blood Group</item>

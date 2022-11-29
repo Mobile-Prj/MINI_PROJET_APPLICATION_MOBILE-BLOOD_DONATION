@@ -29,7 +29,7 @@ import com.example.miniprojetapplicationmobileblooddonation.R;
 import com.makeramen.roundedimageview.RoundedDrawable;
 
 /**
- * Adaptateur des donneurs
+ * Adapter of donors
  */
 public class DonorsAdapter extends RecyclerView.Adapter<DonorsAdapter.DonorsHolder> {
     Context context;

@@ -8,6 +8,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.miniprojetapplicationmobileblooddonation.R;
+/**
+ * Holder for the requesters
+ */
 
 public class DemandersHolder extends RecyclerView.ViewHolder{
     ImageView imageView;

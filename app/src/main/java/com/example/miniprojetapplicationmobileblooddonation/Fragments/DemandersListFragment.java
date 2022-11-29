@@ -31,6 +31,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+/**
+ * Demanders List Fragment
+ */
 
 public class DemandersListFragment extends Fragment {
 

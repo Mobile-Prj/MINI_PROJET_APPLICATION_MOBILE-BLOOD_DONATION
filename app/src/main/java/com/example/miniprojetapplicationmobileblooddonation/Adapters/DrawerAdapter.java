@@ -26,7 +26,7 @@ import slidingnav.SlidingRootNav;
 import slidingnav.SlidingRootNavBuilder;
 
 /**
- * Adapter pour le Menu de Navigation
+ * Adapt for Navigation Menu
  */
 
 public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder>{

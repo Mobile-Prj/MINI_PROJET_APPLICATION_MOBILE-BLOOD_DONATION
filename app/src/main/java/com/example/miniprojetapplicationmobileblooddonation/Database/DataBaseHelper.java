@@ -17,6 +17,10 @@ import com.example.miniprojetapplicationmobileblooddonation.R;
 import java.sql.Blob;
 import java.util.ArrayList;
 
+/**
+ * SQLite Data Base
+ */
+
 public class DataBaseHelper extends SQLiteOpenHelper {
     public DataBaseHelper(@Nullable Context context) {
         super(context, "BloodDonationDBF", null, 1);
@@ -38,6 +42,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
+    // Insert requesters
     public boolean insertRequester(String s1, String s2, String d1, String s4, String s5, byte[] img){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues c=new ContentValues();
@@ -55,6 +60,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         else return true;
 
     }
+    //Insert user
     public boolean insertData(String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s9, byte[] img, Boolean b) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues c = new ContentValues();
@@ -186,8 +192,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Log.d("IMAGE","IN");
         // get informations from the cursor
         while(cursor.moveToNext()) {
-            //byte[] img_byte = cursor.getBlob(6);
-            //img_byte.(img_byte);
             img= cursor.getBlob(9);
             Log.d("IMAGE"," "+img);
         }

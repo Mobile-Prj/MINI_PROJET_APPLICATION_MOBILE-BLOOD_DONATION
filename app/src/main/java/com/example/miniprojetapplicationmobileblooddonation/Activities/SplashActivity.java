@@ -9,6 +9,9 @@ import android.os.Handler;
 import android.widget.ImageView;
 
 import com.example.miniprojetapplicationmobileblooddonation.R;
+/**
+ * DAdapter of the SplashActivity
+ */
 
 public class SplashActivity extends AppCompatActivity {
 

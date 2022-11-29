@@ -32,10 +32,10 @@ import slidingnav.SlidingRootNav;
 import slidingnav.SlidingRootNavBuilder;
 
 /**
- * Menu Activity pour le Menu de Navigation
+ * Menu Activity for the Menu of Navigation
  */
 public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnItemSelectedListener{
-    //instantiation des positions des elements du Menu
+    //instantiation of the positions of the Menu elements
     private static final int POS_CLOSE = 0;
     private static final int POS_HOME = 1;
     private static final int POS_PROFILE= 2;
@@ -43,11 +43,11 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private static final int POS_REQUESTERSLIST= 4;
     private static final int POS_LOGOUT = 6;
 
-    //instantiation des titres et icônes du Menu
+    //instantiation of Menu titles and icons
     private String[] screenTitles;
     private Drawable[] screenIcons;
 
-    //Autres Décalarations
+    //Other declarations
     public static SlidingRootNav slidingRootNav;
     Bundle bundle;
 
@@ -58,10 +58,11 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // Récupérer les données passées du login activity
+
+        //Retrieve  data from login activity
         bundle = getIntent().getExtras();
 
-        //instantiation du SlidingNavigation drawer
+        //instantiation of the SlidingNavigation drawer
         slidingRootNav = new SlidingRootNavBuilder(this)
                 .withDragDistance(180)
                 .withRootViewScale(0.75f)
@@ -73,11 +74,11 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
                 .withMenuLayout(R.layout.drawer_menu)
                 .inject();
 
-        //Charger les icônes et titres
+        //Load icons and titles
         screenIcons = loadScreenIcons();
         screenTitles = loadScreenTitles();
 
-        //instantiation de l'Adaptateur
+        //instantiation of the Adapter
         DrawerAdapter adapter = new DrawerAdapter(this,Arrays.asList(
                 createItemFor(POS_CLOSE),
                 createItemFor(POS_HOME).setChecked(true),
@@ -87,7 +88,7 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
                 new SpaceItem(260),
                 createItemFor(POS_LOGOUT)));
         adapter.setListener(this);
-        //instantiation du RecyclerView
+        //instantiation of the RecyclerView
         @SuppressLint({"MissingInflatedId", "LocalSuppress"})
         RecyclerView list = findViewById(R.id.list);
         list.setNestedScrollingEnabled(false);
@@ -98,7 +99,7 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
     }
 
 
-    //Changment du fragment actuel selon la position selectionnée
+    //Changing the current fragment according to the selected position
     @Override
     public void onItemSelected(int position) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -140,8 +141,7 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
 
 
 
-    //Fixer les couleurs des textes et icônes
-    @SuppressWarnings("rawtypes")
+    //Set colors for texts and icons
     private DrawerItem createItemFor(int position) {
         return new SimpleItem(screenIcons[position], screenTitles[position])
                 .withIconTint(color(R.color.primary_color))
@@ -150,12 +150,12 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
                 .withSelectedTextTint(color(R.color.pink));
     }
 
-    //fonction pour charger les titres des elements du Menu
+    //function to load the titles of Menu items
     private String[] loadScreenTitles() {
         return getResources().getStringArray(R.array.ld_activityScreenTitles);
     }
 
-    //fonction pour charger les icônes des elements du Menu
+    //function to load icons of Menu items
     private Drawable[] loadScreenIcons() {
         TypedArray ta = getResources().obtainTypedArray(R.array.ld_activityScreenIcons);
         Drawable[] icons = new Drawable[ta.length()];
@@ -174,7 +174,7 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
         finish();
     }
 
-    //Récupérer les couleurs
+    //Recover colors
     @ColorInt
     private int color(@ColorRes int res) {
         return ContextCompat.getColor(this, res);

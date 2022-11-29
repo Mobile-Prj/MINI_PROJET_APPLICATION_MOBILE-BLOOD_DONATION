@@ -1,14 +1,16 @@
 package com.example.miniprojetapplicationmobileblooddonation.Models;
 
-import java.sql.Blob;
+/**
+ * DemanderItem
+ */
 
 public class DemanderItem {
 
+   //Attributes
     String Contact,RequestedBy,Adress,DateTime,BloodCateg;
-    //Blob image;
     byte[] image;
 
-
+    //Constructors
     public DemanderItem(String contact, String requestedBy, String adress, String dateTime, String bloodCateg, byte[] Image) {
         Contact = contact;
         RequestedBy = requestedBy;
@@ -20,6 +22,8 @@ public class DemanderItem {
     public DemanderItem() {
 
     }
+
+    //Getters and Setters
 
     public String getBloodCateg() {
         return BloodCateg;

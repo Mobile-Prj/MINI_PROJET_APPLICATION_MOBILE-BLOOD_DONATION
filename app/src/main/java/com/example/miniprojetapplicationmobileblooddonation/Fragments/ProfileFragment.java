@@ -36,6 +36,9 @@ import com.makeramen.roundedimageview.RoundedDrawable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+/**
+ * Profile Fragment
+ */
 
 public class ProfileFragment extends Fragment {
 

@@ -23,6 +23,10 @@ import com.example.miniprojetapplicationmobileblooddonation.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Donors List Fragment
+ */
+
 public class DonorsListFragment extends Fragment {
 
     private List<Donor> items;

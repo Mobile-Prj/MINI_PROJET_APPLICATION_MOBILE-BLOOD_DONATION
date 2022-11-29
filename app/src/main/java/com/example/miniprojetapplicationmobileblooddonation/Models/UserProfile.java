@@ -1,8 +1,12 @@
 package com.example.miniprojetapplicationmobileblooddonation.Models;
 
-import android.graphics.Bitmap;
+/**
+ * UserProfile
+ */
 
 public class UserProfile {
+
+    //Attributes
     byte[] userImage;
     String firstName;
     String LastName;
@@ -13,6 +17,7 @@ public class UserProfile {
     String bloodType;
     boolean isDonor;
 
+    //Constructors
     public UserProfile(byte[] userImage, String firstName, String lastName, String email, String phone, String address, String gender, String bloodType, boolean isDonor) {
         this.userImage = userImage;
         this.firstName = firstName;
@@ -29,6 +34,7 @@ public class UserProfile {
 
     }
 
+    //Getters and Setters
     public byte[] getUserImage() {
         return userImage;
     }

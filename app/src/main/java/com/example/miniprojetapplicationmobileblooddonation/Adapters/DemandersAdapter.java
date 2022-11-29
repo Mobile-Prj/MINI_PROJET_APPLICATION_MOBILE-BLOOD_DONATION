@@ -32,7 +32,7 @@ import com.makeramen.roundedimageview.RoundedDrawable;
 import java.util.List;
 
 /**
- * Adaptateur des demandeurs
+ * Adapter for the requesters
  */
 public class DemandersAdapter extends RecyclerView.Adapter<DemandersHolder> {
 

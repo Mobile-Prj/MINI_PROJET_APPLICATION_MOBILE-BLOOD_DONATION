@@ -13,7 +13,7 @@ import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.miniprojetapplicationmobileblooddonation.R;
 /**
- * Adaptateur de la page d'acceuil
+ * Adapter of the Home page
  */
 
 public class OnboardingAdapter extends PagerAdapter {

@@ -1,4 +1,7 @@
 package com.example.miniprojetapplicationmobileblooddonation.Models;
+/**
+ * Donor
+ */
 
 public class Donor {
     // Attributes

@@ -3,6 +3,9 @@ package com.example.miniprojetapplicationmobileblooddonation.Models;
 import android.view.ViewGroup;
 
 import com.example.miniprojetapplicationmobileblooddonation.Adapters.DrawerAdapter;
+/**
+ * DrawerItem
+ */
 
 public abstract class DrawerItem<T extends DrawerAdapter.ViewHolder>
 {

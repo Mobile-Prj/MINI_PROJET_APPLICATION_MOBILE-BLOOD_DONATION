@@ -38,6 +38,9 @@ import com.vicmikhailau.maskededittext.MaskedEditText;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+/**
+ * Adapter of the SignUpActivity
+ */
 
 public class SignUpActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     EditText fname,lname,mail,add,password;

@@ -21,7 +21,9 @@ import com.example.miniprojetapplicationmobileblooddonation.Adapters.OnboardingA
 
 import com.example.miniprojetapplicationmobileblooddonation.R;
 
-
+/**
+ * Home Fragment
+ */
 public class HomeFragment extends Fragment {
     private ViewPager viewPager;
     private CardView next;
