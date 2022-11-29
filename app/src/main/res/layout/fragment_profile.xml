@@ -133,7 +133,7 @@
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
                 android:gravity="center|center_horizontal"
                 android:inputType="phone"
-                app:mask="+2126 ## ## ## ##" />
+                app:mask="+212# ## ## ## ##" />
 
 
 
