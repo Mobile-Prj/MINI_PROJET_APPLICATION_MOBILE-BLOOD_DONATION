@@ -1,17 +1,21 @@
 package com.example.miniprojetapplicationmobileblooddonation.Models;
 
+import java.sql.Blob;
+
 public class DemanderItem {
 
     String Contact,RequestedBy,Adress,DateTime,BloodCateg;
-    int Image;
+    //Blob image;
+    byte[] image;
 
-    public DemanderItem(String contact, String requestedBy, String adress, String dateTime, String bloodCateg, int image) {
+
+    public DemanderItem(String contact, String requestedBy, String adress, String dateTime, String bloodCateg, byte[] Image) {
         Contact = contact;
         RequestedBy = requestedBy;
         Adress = adress;
         DateTime = dateTime;
         BloodCateg = bloodCateg;
-        Image = image;
+        image = Image;
     }
     public DemanderItem() {
 
@@ -57,11 +61,11 @@ public class DemanderItem {
         DateTime = dateTime;
     }
 
-    public int getImage() {
-        return Image;
+    public byte[] getImage() {
+        return image;
     }
 
-    public void setImage(int image) {
-        Image = image;
+    public void setImage(byte[] Image) {
+        image = Image;
     }
 }

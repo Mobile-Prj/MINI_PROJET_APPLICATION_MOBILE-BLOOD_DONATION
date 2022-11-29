@@ -4,7 +4,10 @@ import android.annotation.SuppressLint;
 import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +39,8 @@ public class DemandersListFragment extends Fragment {
     DataBaseHelper db;
     RecyclerView recyclerView;
     String user_email;
+    DemandersAdapter adapter;
+    byte[] img_byte;
 
     @Nullable
     @Override
@@ -56,9 +61,9 @@ public class DemandersListFragment extends Fragment {
         }
         db = new DataBaseHelper(getContext());
         items= new ArrayList<>();
-
         recyclerView = view.findViewById(R.id.demander_list_recyleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter=new DemandersAdapter(getContext(),items);
         displayData();
         floatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +75,7 @@ public class DemandersListFragment extends Fragment {
         });
 
     }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -77,31 +83,27 @@ public class DemandersListFragment extends Fragment {
         getFragmentManager().beginTransaction().detach(this).attach(this).commit();
 
     }
+
+
     private void displayData(){
         Cursor c = db.getRequesters();
+        items.clear();
         if(c.getCount()==0){
             Toast.makeText(getContext(),"NO requesters !",Toast.LENGTH_LONG).show();
             return;
         }
 
-
-        else{
+        else if(c.getCount() > 0)
+        {
             while (c.moveToNext()){
-                items.add( new DemanderItem(c.getString(2),c.getString(1),c.getString(4),c.getString(3),c.getString(5),R.drawable.icon));
+                img_byte= c.getBlob(6);
+                items.add( new DemanderItem(c.getString(2),c.getString(1),c.getString(4),c.getString(3),c.getString(5),img_byte));
 
             }
-            recyclerView.setAdapter(new DemandersAdapter(getContext(),items));
+            recyclerView.setAdapter(adapter);
 
         }
     }
 
-   /* private void dataInitialize() {
-
-        items= new ArrayList<DemanderItem>();
-        items.add( new DemanderItem("+6273890","FULL NAME","HOPITAL WXXXX","06/12/2022 on 6PM","AB+",R.drawable.icon));
-        items.add( new DemanderItem("+6273890","FULL NAME","HOPITAL YYYYY","08/10/2022 on 9PM","O+",R.drawable.icon));
-        items.add( new DemanderItem("+4989299","FULL NAME","HOPITAL ZZZZ","14/12/2022 on 10AM","A+",R.drawable.icon));
-
-    }*/
 
 }

@@ -6,11 +6,11 @@ public class Donor {
     String name;
     String phone;
     String city;
-    int image;
+    byte[] image;
 
     // constructors
 
-    public Donor(String title,String name, String phone,String city, int image) {
+    public Donor(String title,String name, String phone,String city, byte[] image) {
         this.title = title;
         this.name = name;
         this.phone = phone;
@@ -38,11 +38,11 @@ public class Donor {
         this.phone = phone;
     }
 
-    public int getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 

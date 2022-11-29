@@ -60,7 +60,7 @@
 
     <!-- Spinner for Blood Groups -->
     <string-array name="bloodGroups">
-        <item>Group</item>
+        <item>Blood Group</item>
         <item>A+</item>
         <item>A-</item>
         <item>B+</item>
@@ -92,7 +92,7 @@
     <string-array name="ld_activityScreenIcons">
         <item>@drawable/ic_baseline_close_24</item>
         <item>@drawable/ic_baseline_home_24</item>
-        <item>@drawable/ic_action_name</item>
+        <item>@drawable/ic_baseline_account_box_24</item>
         <item>@drawable/ic_baseline_list_24</item>
         <item>@drawable/ic_requesters</item>
         <item>0</item>

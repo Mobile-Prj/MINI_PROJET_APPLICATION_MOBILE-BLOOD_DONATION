@@ -13,14 +13,14 @@
         android:id="@+id/background_profile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFE3E3"
+        android:background="#EFECEC"
         app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="0dp">
 
         <ImageView
             android:id="@+id/img_blood_cells"
             android:layout_width="match_parent"
-            android:layout_height="211dp"
+            android:layout_height="150dp"
             android:layout_marginBottom="520dp"
             android:contentDescription="@string/img_cells"
             android:scaleType="fitXY"
@@ -157,10 +157,13 @@
 
             <Spinner
                 android:id="@+id/profile_address"
+                android:layout_gravity="left"
                 android:layout_width="match_parent"
+                android:entries="@array/city_list"
                 android:layout_height="match_parent"
                 android:background="@drawable/background"
                 android:popupBackground="@color/white"
+                android:theme="@style/test"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 
@@ -169,7 +172,7 @@
         <LinearLayout
             android:id="@+id/barre_gender"
             android:layout_width="320dp"
-            android:layout_height="120px"
+            android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="50dp"
@@ -192,6 +195,9 @@
                 android:id="@+id/profile_gender"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:entries="@array/genders"
+
+                android:layout_gravity="left"
                 android:background="@drawable/background"
                 android:popupBackground="@color/white"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -223,7 +229,9 @@
             <Spinner
                 android:id="@+id/listGrpBlood"
                 android:layout_width="match_parent"
+                android:layout_gravity="left"
                 android:layout_height="match_parent"
+                android:entries="@array/bloodGroups"
                 android:background="@drawable/background"
                 android:popupBackground="@color/white"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
@@ -235,7 +243,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:buttonTint="@color/radio_blue"
+            android:backgroundTint="#FFFFFF"
+            android:buttonTint="@color/primary_color"
             android:checked="true"
             android:text="@string/check_box_1"
             android:textAlignment="center"
@@ -246,10 +255,24 @@
             app:layout_constraintHorizontal_bias="0.487"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/barre_blood_type" />
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="2dp"
+            android:background="#FAFFFFFF"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+          >
+
+        </LinearLayout>
+
 
         <EditText
             android:id="@+id/profile_firstName"
-            android:layout_width="155dp"
+            android:layout_width="130dp"
             android:layout_height="48dp"
             android:autofillHints=""
             android:ems="10"
@@ -267,7 +290,7 @@
 
         <EditText
             android:id="@+id/profile_lastName"
-            android:layout_width="159dp"
+            android:layout_width="130dp"
             android:layout_height="48dp"
             android:layout_marginEnd="40dp"
             android:autofillHints=""

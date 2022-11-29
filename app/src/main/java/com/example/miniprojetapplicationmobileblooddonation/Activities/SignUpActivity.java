@@ -9,6 +9,7 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
@@ -32,6 +33,7 @@ import android.widget.Toast;
 
 import com.example.miniprojetapplicationmobileblooddonation.Database.DataBaseHelper;
 import com.example.miniprojetapplicationmobileblooddonation.R;
+import com.makeramen.roundedimageview.RoundedDrawable;
 import com.vicmikhailau.maskededittext.MaskedEditText;
 
 import java.io.ByteArrayOutputStream;
@@ -50,8 +52,10 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
     Spinner listBloodGroup;
     ArrayAdapter<CharSequence> arrayAdapter;
     DataBaseHelper db;
-    //int SELECT_PICTURE = 200;
     Dialog dialog;
+    Boolean isImageSelected;
+    Bitmap imgProfileBitmap;
+    RoundedDrawable roundedProfileImage;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +68,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
         listSpinner=findViewById(R.id.listCities);
         myFont = Typeface.createFromAsset(getAssets(), "fonts/LavishlyYours-Regular.ttf");
         appTitle.setTypeface(myFont);
-
+        isImageSelected=false;
         arrayAdapter = ArrayAdapter.createFromResource(this, R.array.bloodGroups, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         arrayAdapter.setDropDownViewResource(androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         listBloodGroup.setAdapter(arrayAdapter);
@@ -92,22 +96,22 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
             String addr=listSpinner.getSelectedItem().toString();
             String pass=password.getText().toString();
             String BloodGrup=listBloodGroup.getSelectedItem().toString();
-            if(rg.getCheckedRadioButtonId()==R.id.radioButton2) gender="FEMALE";
+            if(rg.getCheckedRadioButtonId()==R.id.radioButton2) gender="Female";
             else gender="Male";
-            Boolean don= Boolean.valueOf(donor.getText().toString());
+            Boolean don= donor.isChecked();
 
-            if(prenom.equals("")||nom.equals("")||email.equals("")||num.equals("")|| pass.equals("")||BloodGrup.equals("Group")||addr.equals("City"))
+            if(prenom.equals("")||nom.equals("")||email.equals("")||num.equals("")|| pass.equals("")||BloodGrup.equals("Blood Group")||addr.equals("City"))
                 Toast.makeText(SignUpActivity.this ,"Please enter all the fields",Toast.LENGTH_SHORT).show();
-
             else {
                 if(num.length()!=17)
                     Toast.makeText(SignUpActivity.this ,"The Contact field should follow the format number",Toast.LENGTH_SHORT).show();
+
                 else{
                     String emailToText=mail.getText().toString();
                     if (!emailToText.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailToText).matches()) {
                         Boolean checkuser = db.checkusername(email);
                         if (!checkuser) {
-                            boolean insert = db.insertData(prenom, nom, email, num, addr, gender, BloodGrup, pass, getImage(img), don);
+                            boolean insert = db.insertData(prenom, nom, email, num, addr, gender, BloodGrup, pass, Convert_ToBipmap(img), don);
                             if (insert) {
                                openSuccessDialog();
                             } else {
@@ -129,13 +133,39 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
         });
     }
-    private byte[] getImage(ImageView img) {
-        Bitmap bitmap = ((BitmapDrawable) img.getDrawable()).getBitmap();
+    private  byte[] Convert_ToBipmap(ImageView img){
+        // convert the image to bipmap and then use the bipmap to get roundedImage
+        img.setDrawingCacheEnabled(true);
+        imgProfileBitmap = img.getDrawingCache();
+        roundedProfileImage = RoundedDrawable.fromBitmap(imgProfileBitmap);
+        return getImage(roundedProfileImage);
+    }
+    private byte[] getImage(RoundedDrawable img) {
+        byte[] image = new byte[0];
+        if(isImageSelected) {
+            Bitmap bitmap = RoundedDrawable.drawableToBitmap(img);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            image = stream.toByteArray();
+            return image;
+
+        }
+        else {
+            return ConvertImage();
+
+        }
+    }
+
+    private byte[] ConvertImage() {
+        Bitmap icon = BitmapFactory.decodeResource(this.getResources(),
+                R.drawable.ic_donor);
+
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        icon.compress(Bitmap.CompressFormat.PNG, 100, stream);
         byte[] image = stream.toByteArray();
         return  image;
     }
+
 
     private void imageChooser()
     {
@@ -170,6 +200,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                         }
                         img.setImageBitmap(
                                 selectedImageBitmap);
+                        isImageSelected=true;
                     }
                 }
             });

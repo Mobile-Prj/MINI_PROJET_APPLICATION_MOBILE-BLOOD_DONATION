@@ -1,7 +1,9 @@
 package com.example.miniprojetapplicationmobileblooddonation.Fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -25,6 +27,8 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.example.miniprojetapplicationmobileblooddonation.Activities.MenuActivities.MenuActivity;
 import com.example.miniprojetapplicationmobileblooddonation.Database.DataBaseHelper;
 import com.example.miniprojetapplicationmobileblooddonation.Models.UserProfile;
 import com.example.miniprojetapplicationmobileblooddonation.R;
@@ -46,7 +50,8 @@ public class ProfileFragment extends Fragment {
     ArrayAdapter<CharSequence> bloodTpyeArrayAdapter, genderArrayAdapter, cityArrayAdapter;
     Bitmap imgProfileBitmap;
     RoundedDrawable roundedProfileImage;
-    Boolean isClicked,leave;
+
+    public static Boolean isClicked=false,leave;
     Dialog dialog;
 
     @Nullable
@@ -62,7 +67,6 @@ public class ProfileFragment extends Fragment {
         isClicked=false;
         leave=true;
         dialog = new Dialog(getContext());
-
 
         // get the email from the Menu activity to perform requests
         if(getArguments() != null){
@@ -91,6 +95,7 @@ public class ProfileFragment extends Fragment {
         cityArrayAdapter = ArrayAdapter.createFromResource(this.getContext(), R.array.city_list, R.layout.spinner_item);
         bloodTpyeArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
         genderArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
+
         cityArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
         bloodType.setAdapter(bloodTpyeArrayAdapter);
         gender.setAdapter(genderArrayAdapter);
@@ -120,7 +125,8 @@ public class ProfileFragment extends Fragment {
                 // if the edit button is clicked
                 // change the edit button to done
                 editButton.setText(R.string.edit_done);
-                editButton.setBackgroundTintList(getContext().getResources().getColorStateList(R.color.radio_blue));
+                editButton.setBackgroundTintList(getContext().getResources().getColorStateList(R.color.white));
+                editButton.setTextColor(getContext().getResources().getColorStateList(R.color.primary_color));
 
                 // set the editText editable to change values
                 enable(true);
@@ -133,7 +139,7 @@ public class ProfileFragment extends Fragment {
             }else{
                 isClicked=false;
                 editButton.setBackgroundTintList(getContext().getResources().getColorStateList(R.color.primary_color));
-
+                editButton.setTextColor(getContext().getResources().getColorStateList(R.color.white));
                 // get the new values of texts
                 userProfile.setFirstName(firstName.getText().toString());
                 userProfile.setLastName(lastName.getText().toString());
@@ -166,6 +172,7 @@ public class ProfileFragment extends Fragment {
     }
 
 
+
     private void enable(boolean enabled){
         phone.setEnabled(enabled);
         address.setEnabled(enabled);
@@ -182,11 +189,11 @@ public class ProfileFragment extends Fragment {
         Intent i = new Intent();
         i.setType("image/*");
         i.setAction(Intent.ACTION_GET_CONTENT);
-
         launchSomeActivity.launch(i);
     }
 
-    private byte[] getImage(RoundedDrawable img) {
+
+    private static byte[] getImage(RoundedDrawable img) {
         Bitmap bitmap = RoundedDrawable.drawableToBitmap(img);
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);

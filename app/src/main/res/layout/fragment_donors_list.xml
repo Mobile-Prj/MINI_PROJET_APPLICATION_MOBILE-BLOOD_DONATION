@@ -41,7 +41,7 @@
                 android:contentDescription="@string/donors_list"
                 android:entries="@array/bloodGroups"
                 android:inputType="text"
-                android:theme="@style/Spinner"
+                android:theme="@style/SpinnerAgain"
 
                 android:background="@android:color/transparent"
                 android:padding="5dp"
@@ -81,7 +81,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:theme="@style/Spinner"
+                android:theme="@style/SpinnerAgain"
                 android:background="@android:color/transparent"
                 android:padding="5dp"
                 android:textColorHint="@color/white"

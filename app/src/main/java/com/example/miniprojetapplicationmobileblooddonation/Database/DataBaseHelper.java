@@ -5,27 +5,28 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import com.example.miniprojetapplicationmobileblooddonation.Models.DemanderItem;
 import com.example.miniprojetapplicationmobileblooddonation.Models.Donor;
 import com.example.miniprojetapplicationmobileblooddonation.Models.UserProfile;
 import com.example.miniprojetapplicationmobileblooddonation.R;
 
+import java.sql.Blob;
 import java.util.ArrayList;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     public DataBaseHelper(@Nullable Context context) {
-        super(context, "BloodDonationDB1", null, 1);
+        super(context, "BloodDonationDBF", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         //CREATE Table
         sqLiteDatabase.execSQL("CREATE TABLE user(id integer primary key AUTOINCREMENT,FirstName text,LastName text,gender text,Phone text,Address text,email text,BloodCategory text,password text,image blob,Isdonor boolean)");
-        sqLiteDatabase.execSQL("CREATE TABLE requester(id integer primary key AUTOINCREMENT,FullName text,Contact text,PostedOn text,Location text,BloodCategory text)");
+        sqLiteDatabase.execSQL("CREATE TABLE requester(id integer primary key AUTOINCREMENT,FullName text,Contact text,PostedOn text,Location text,BloodCategory text,image blob)");
 
     }
 
@@ -37,7 +38,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean insertRequester(String s1, String s2, String d1, String s4, String s5){
+    public boolean insertRequester(String s1, String s2, String d1, String s4, String s5, byte[] img){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues c=new ContentValues();
         c.put("FullName",s1);
@@ -45,6 +46,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         c.put("PostedOn", d1);
         c.put("Location",s4);
         c.put("BloodCategory",s5);
+        c.put("image", img);
 
         long result = db.insert("requester",null,c);
         if(result==-1){
@@ -97,6 +99,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return c;
     }
 
+
     //Display list of donors
     public ArrayList<Donor> getDonors(){
 
@@ -110,7 +113,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
             donor.setTitle(cursor.getString(7));
             donor.setCity(cursor.getString(5));
             donor.setPhone(cursor.getString(4));
-            donor.setImage(R.drawable.ic_donor);
+            byte[] img_byte = cursor.getBlob(9);
+            donor.setImage(img_byte);
             donors.add(donor);
         }
         cursor.close();
@@ -118,8 +122,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return donors;
     }
 
-    // Search Donors
 
+
+    // Search Donors
     public ArrayList<Donor> getSearchedDonors(String loca, String catB){
 
         SQLiteDatabase db = getWritableDatabase();
@@ -128,11 +133,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, new String[]{loca,catB});
         while(cursor.moveToNext()){
             Donor donor = new Donor();
-            donor.setName(cursor.getString(2));
+            donor.setName(cursor.getString(1)+" "+(cursor.getString(2)));
             donor.setTitle(cursor.getString(7));
             donor.setCity(cursor.getString(5));
             donor.setPhone(cursor.getString(4));
-            donor.setImage(R.drawable.ic_profile);
+            byte[] img_byte = cursor.getBlob(9);
+            donor.setImage(img_byte);
             donors.add(donor);
         }
         cursor.close();
@@ -168,6 +174,28 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return userProfile;
+
+    }
+
+    // get current user profile function
+    public byte[] getUserImage(String email){
+        byte[] img = new byte[0];
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM USER WHERE email=?";
+        Cursor cursor = db.rawQuery(query, new String[]{email});
+        Log.d("IMAGE","IN");
+        // get informations from the cursor
+        while(cursor.moveToNext()) {
+            //byte[] img_byte = cursor.getBlob(6);
+            //img_byte.(img_byte);
+            img= cursor.getBlob(9);
+            Log.d("IMAGE"," "+img);
+        }
+
+        cursor.close();
+        db.close();
+
+        return img;
 
     }
 

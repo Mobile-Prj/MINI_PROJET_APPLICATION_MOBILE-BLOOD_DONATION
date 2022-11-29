@@ -4,6 +4,8 @@ import static android.app.PendingIntent.getActivity;
 
 import static java.security.AccessController.getContext;
 
+import java.io.ByteArrayOutputStream;
+import java.util.*;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import android.app.Fragment;
@@ -21,8 +23,10 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,6 +36,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,6 +74,7 @@ public class FormActivity extends AppCompatActivity {
     DemanderItem req;
     DemandersListFragment f;
     String user_email,Fname;
+    byte[] img_user;
 
     @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
@@ -95,9 +101,12 @@ public class FormActivity extends AppCompatActivity {
 
         }
         /*
-        get the user name
+        get the user name et image
          */
         Fname = db.getUserName(user_email);
+
+        img_user = db.getUserImage(user_email);
+
 
         btnInsert.setOnClickListener(view -> {
             String LocationTXT= Cities_listSpinner.getSelectedItem().toString();
@@ -108,13 +117,12 @@ public class FormActivity extends AppCompatActivity {
             String ContactMasked = String.valueOf(Contact.getText());
             if(ContactMasked.length()!=17)
                 Toast.makeText(FormActivity.this ,"The Contact field should follow the format number",Toast.LENGTH_SHORT).show();
-            else if(BloodCateg.equals("Group"))
+            else if(BloodCateg.equals("Blood Group"))
                 Toast.makeText(FormActivity.this ,"Please choose a blood group ",Toast.LENGTH_SHORT).show();
             else if(LocationTXT.equals("City"))
                 Toast.makeText(FormActivity.this ,"Please choose a City ",Toast.LENGTH_SHORT).show();
             else {
-                boolean CheckInsertedData = db.insertRequester(Fname,ContactMasked,date,LocationTXT,BloodCateg);
-                req = new DemanderItem(Fname,ContactMasked,date,LocationTXT,BloodCateg,R.drawable.icon);
+                boolean CheckInsertedData = db.insertRequester(Fname,ContactMasked,date,LocationTXT,BloodCateg,img_user);
                 if(CheckInsertedData){
                     openSuccessDialog();
                 }
@@ -124,6 +132,7 @@ public class FormActivity extends AppCompatActivity {
         });
     }
 
+
     private void openFailDialog() {
         dialog.setContentView(R.layout.dialog_error_layout);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -131,6 +140,7 @@ public class FormActivity extends AppCompatActivity {
         btnOk.setOnClickListener(view -> dialog.dismiss());
         dialog.show();
     }
+
 
     private void openSuccessDialog() {
         dialog.setContentView(R.layout.dialog_success_layout);

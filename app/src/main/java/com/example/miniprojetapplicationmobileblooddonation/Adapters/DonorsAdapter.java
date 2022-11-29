@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.app.LauncherActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -20,9 +22,11 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.miniprojetapplicationmobileblooddonation.Fragments.ProfileFragment;
 import com.example.miniprojetapplicationmobileblooddonation.Models.DemanderItem;
 import com.example.miniprojetapplicationmobileblooddonation.Models.Donor;
 import com.example.miniprojetapplicationmobileblooddonation.R;
+import com.makeramen.roundedimageview.RoundedDrawable;
 
 /**
  * Adaptateur des donneurs
@@ -30,11 +34,14 @@ import com.example.miniprojetapplicationmobileblooddonation.R;
 public class DonorsAdapter extends RecyclerView.Adapter<DonorsAdapter.DonorsHolder> {
     Context context;
     List<Donor> items;
+    Bitmap imgProfileBitmap ;
+    RoundedDrawable roundedProfileImage;
 
 
     public DonorsAdapter(Context context, List<Donor> items) {
         this.context = context;
         this.items = items;
+
     }
 
     public List<Donor> getItems() {
@@ -49,17 +56,25 @@ public class DonorsAdapter extends RecyclerView.Adapter<DonorsAdapter.DonorsHold
 
     @Override
     public void onBindViewHolder(@NonNull  DonorsHolder holder, int position) {
+
+        holder.imageView.setDrawingCacheEnabled(true);
+        //imgProfileBitmap = holder.imageView.getDrawingCache();
+        //roundedProfileImage = RoundedDrawable.fromBitmap(imgProfileBitmap);
+
         holder.titleView.setText(items.get(position).getTitle()+ "  Donor");
         holder.nameView.setText("Full Name : "+items.get(position).getName());
         holder.phoneView.setText("Phone : "+items.get(position).getPhone());
         holder.cityView.setText("City : "+items.get(position).getCity());
-        holder.imageView.setImageResource(items.get(position).getImage());
+        imgProfileBitmap = BitmapFactory.decodeByteArray(items.get(position).getImage(), 0, items.get(position).getImage().length);
+        holder.imageView.setImageBitmap(imgProfileBitmap);
     }
 
     @Override
     public int getItemCount() {
         return items.size();
     }
+
+
     public class DonorsHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         Dialog dialog = new Dialog(context);
 

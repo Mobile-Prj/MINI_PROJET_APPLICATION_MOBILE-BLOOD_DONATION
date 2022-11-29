@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -46,7 +48,7 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
     private Drawable[] screenIcons;
 
     //Autres Décalarations
-    private SlidingRootNav slidingRootNav;
+    public static SlidingRootNav slidingRootNav;
     Bundle bundle;
 
     @Override
@@ -76,7 +78,7 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
         screenTitles = loadScreenTitles();
 
         //instantiation de l'Adaptateur
-        DrawerAdapter adapter = new DrawerAdapter(Arrays.asList(
+        DrawerAdapter adapter = new DrawerAdapter(this,Arrays.asList(
                 createItemFor(POS_CLOSE),
                 createItemFor(POS_HOME).setChecked(true),
                 createItemFor(POS_PROFILE),
@@ -85,8 +87,6 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
                 new SpaceItem(260),
                 createItemFor(POS_LOGOUT)));
         adapter.setListener(this);
-
-
         //instantiation du RecyclerView
         @SuppressLint({"MissingInflatedId", "LocalSuppress"})
         RecyclerView list = findViewById(R.id.list);
@@ -95,8 +95,8 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
         list.setAdapter(adapter);
         adapter.setSelected(POS_HOME);
 
-
     }
+
 
     //Changment du fragment actuel selon la position selectionnée
     @Override
@@ -137,6 +137,8 @@ public class MenuActivity extends AppCompatActivity implements DrawerAdapter.OnI
         transaction.commit();
 
     }
+
+
 
     //Fixer les couleurs des textes et icônes
     @SuppressWarnings("rawtypes")
