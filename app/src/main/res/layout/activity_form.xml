@@ -75,7 +75,7 @@
                     android:layout_below="@+id/Contact"
                     android:entries="@array/city_list"
                     android:hint="Location"
-                    android:theme="@style/MySpinner"
+                    android:theme="@style/SpinnerLight"
                     android:inputType="text"
                     android:padding="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -109,7 +109,7 @@
                     android:layout_height="wrap_content"
                     android:entries="@array/bloodGroups"
                     android:inputType="text"
-                    android:theme="@style/MySpinner"
+                    android:theme="@style/SpinnerLight"
                     android:padding="5dp" />
             </LinearLayout>
 

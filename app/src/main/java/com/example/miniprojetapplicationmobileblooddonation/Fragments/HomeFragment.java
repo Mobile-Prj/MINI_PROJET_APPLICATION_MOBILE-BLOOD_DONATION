@@ -88,18 +88,14 @@ public class HomeFragment extends Fragment {
     private void dotsFunction(int pos) {
         dots = new TextView[4];
         dotsLayout.removeAllViews();
-
         for (int i = 0 ; i< dots.length ; i++){
-
             dots[i] = new TextView(getContext());
             dots[i].setText(Html.fromHtml("."));
             //unselected dots color
             dots[i].setTextColor(color(R.color.grey));
             //unselected dots size
             dots[i].setTextSize(100);
-
             dotsLayout.addView(dots[i]);
-
         }
 
         if (dots.length > 0){

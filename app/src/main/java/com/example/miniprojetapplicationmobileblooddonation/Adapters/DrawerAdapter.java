@@ -125,37 +125,24 @@ public class DrawerAdapter extends RecyclerView.Adapter<DrawerAdapter.ViewHolder
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
         builder1.setTitle("You have unsaved Changes !");
         builder1.setCancelable(false);
-
         builder1.setMessage("If you close this dialog , you will lose all chages you made."+"\n" +
                 "Are You sure, you cant to close ?");
         builder1.setCancelable(true);
-
-        builder1.setPositiveButton(
-                "Don't Close",
+        builder1.setPositiveButton("Don't Close",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.cancel();
                         MenuActivity.slidingRootNav.closeMenu();
-
-                    }
-                });
-
-        builder1.setNegativeButton(
-                "Close",
+                    }});
+        builder1.setNegativeButton("Close",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         ProfileFragment.isClicked=false;
                         check=false;
                         check_save_mode(position);
-
-
-
-                    }
-                });
-
+                    }});
         AlertDialog alert11 = builder1.create();
         alert11.show();
-
     }
 
     public void setListener(OnItemSelectedListener listener) {

@@ -163,7 +163,6 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/background"
                 android:popupBackground="@color/white"
-                android:theme="@style/test"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
 

@@ -102,13 +102,11 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
             if(rg.getCheckedRadioButtonId()==R.id.radioButton2) gender="Female";
             else gender="Male";
             Boolean don= donor.isChecked();
-
             if(prenom.equals("")||nom.equals("")||email.equals("")||num.equals("")|| pass.equals("")||BloodGrup.equals("Blood Group")||addr.equals("City"))
                 Toast.makeText(SignUpActivity.this ,"Please enter all the fields",Toast.LENGTH_SHORT).show();
             else {
                 if(num.length()!=17)
                     Toast.makeText(SignUpActivity.this ,"The Contact field should follow the format number",Toast.LENGTH_SHORT).show();
-
                 else{
                     String emailToText=mail.getText().toString();
                     if (!emailToText.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailToText).matches()) {
@@ -120,7 +118,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                             } else {
                                 openFailDialog();
                             }
-
                         }
                         else{
                             Toast.makeText(SignUpActivity.this, "Email already exists! please Sign in", Toast.LENGTH_SHORT).show();
@@ -152,15 +149,14 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             image = stream.toByteArray();
             return image;
-
         }
         else {
-            return ConvertImage();
-
+            return MakeDefaultImage();
         }
     }
 
-    private byte[] ConvertImage() {
+    //Call this function to make the default image for a signed up user if he doesn't choose one
+    private byte[] MakeDefaultImage() {
         Bitmap icon = BitmapFactory.decodeResource(this.getResources(),
                 R.drawable.ic_donor);
 
@@ -188,7 +184,6 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                 if (result.getResultCode()
                         == Activity.RESULT_OK) {
                     Intent data = result.getData();
-                    // do your operation from here....
                     if (data != null
                             && data.getData() != null) {
                         Uri selectedImageUri = data.getData();
