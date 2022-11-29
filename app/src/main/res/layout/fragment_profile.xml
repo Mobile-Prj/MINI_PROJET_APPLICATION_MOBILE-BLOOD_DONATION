@@ -119,17 +119,23 @@
                 android:paddingStart="12dp"
                 app:srcCompat="@drawable/ic_baseline_phone_24" />
 
-            <EditText
+
+            <com.vicmikhailau.maskededittext.MaskedEditText
                 android:id="@+id/profile_telephone"
+                android:textAlignment="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingHorizontal="15dp"
-                android:paddingVertical="7dp"
-                android:textAlignment="center"
+                android:paddingVertical="0dp"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="italic"
-                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck"
+                android:gravity="center|center_horizontal"
+                android:inputType="phone"
+                app:mask="+2126 ## ## ## ##" />
+
+
 
         </LinearLayout>
 
@@ -319,20 +325,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textViewcClose" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="250dp"
-            android:layout_height="500dp"
-            android:layout_marginStart="196dp"
-            android:layout_marginTop="100dp"
-            android:layout_marginEnd="157dp"
-            android:layout_marginBottom="32dp"
-            android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/edit_profile_button" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

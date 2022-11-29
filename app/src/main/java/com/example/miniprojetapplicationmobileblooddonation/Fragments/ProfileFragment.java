@@ -33,6 +33,7 @@ import com.example.miniprojetapplicationmobileblooddonation.Database.DataBaseHel
 import com.example.miniprojetapplicationmobileblooddonation.Models.UserProfile;
 import com.example.miniprojetapplicationmobileblooddonation.R;
 import com.makeramen.roundedimageview.RoundedDrawable;
+import com.vicmikhailau.maskededittext.MaskedEditText;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -42,7 +43,8 @@ import java.io.IOException;
 
 public class ProfileFragment extends Fragment {
 
-    EditText phone, firstName, lastName;
+    EditText firstName, lastName;
+    MaskedEditText phone;
     ImageView profileImage;
     TextView email;
     CheckBox isDonor;
@@ -173,9 +175,6 @@ public class ProfileFragment extends Fragment {
         });
 
     }
-
-
-
     private void enable(boolean enabled){
         phone.setEnabled(enabled);
         address.setEnabled(enabled);
