@@ -100,7 +100,8 @@ public class DemandersListFragment extends Fragment {
         {
             while (c.moveToNext()){
                 img_byte= c.getBlob(6);
-                items.add( new DemanderItem(c.getString(2),c.getString(1),c.getString(4),c.getString(3),c.getString(5),img_byte));
+                items.add( new DemanderItem(c.getString(2),c.getString(1),
+                        c.getString(4),c.getString(3),c.getString(5),img_byte));
 
             }
             recyclerView.setAdapter(adapter);

@@ -102,7 +102,6 @@ public class DonorsAdapter extends RecyclerView.Adapter<DonorsAdapter.DonorsHold
             ImageView imgClose= (ImageView) dialog.findViewById(R.id.imageViewClose);
             Button call_btn= dialog.findViewById(R.id.btn_call);
             Button wtp_btn= dialog.findViewById(R.id.btn_wtp);
-
             imgClose.setOnClickListener(view -> dialog.dismiss());
             call_btn.setOnClickListener(view -> {
                 int position = getAdapterPosition();
@@ -110,9 +109,7 @@ public class DonorsAdapter extends RecyclerView.Adapter<DonorsAdapter.DonorsHold
                 Intent i = new Intent(Intent.ACTION_DIAL);
                 i.setData(Uri.parse("tel:"+item.getPhone()));
                 context.startActivity(i);
-                dialog.dismiss();
-
-            });
+                dialog.dismiss();});
             wtp_btn.setOnClickListener(view -> {
                 int position = getAdapterPosition();
                 Donor item = items.get(position);

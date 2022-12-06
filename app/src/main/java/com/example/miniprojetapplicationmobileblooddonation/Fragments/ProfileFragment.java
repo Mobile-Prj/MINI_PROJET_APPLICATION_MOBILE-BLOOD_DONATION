@@ -39,7 +39,6 @@ import java.io.IOException;
 /**
  * Profile Fragment
  */
-
 public class ProfileFragment extends Fragment {
 
     EditText phone, firstName, lastName;
@@ -75,7 +74,6 @@ public class ProfileFragment extends Fragment {
         if(getArguments() != null){
             user_email = getArguments().getString("user_email");
         }
-
         DataBaseHelper dataBaseHelper = new DataBaseHelper(getContext());
 
         // get the user profile
@@ -98,8 +96,8 @@ public class ProfileFragment extends Fragment {
         cityArrayAdapter = ArrayAdapter.createFromResource(this.getContext(), R.array.city_list, R.layout.spinner_item);
         bloodTpyeArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
         genderArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
-
         cityArrayAdapter.setDropDownViewResource(R.layout.spinner_item);
+
         bloodType.setAdapter(bloodTpyeArrayAdapter);
         gender.setAdapter(genderArrayAdapter);
         address.setAdapter(cityArrayAdapter);

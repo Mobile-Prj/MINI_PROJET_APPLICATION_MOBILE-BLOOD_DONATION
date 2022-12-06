@@ -112,7 +112,7 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
                     if (!emailToText.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(emailToText).matches()) {
                         Boolean checkuser = db.checkusername(email);
                         if (!checkuser) {
-                            boolean insert = db.insertData(prenom, nom, email, num, addr, gender, BloodGrup, pass, Convert_ToBipmap(img), don);
+                            boolean insert = db.insertData(prenom, nom, email, num, addr, gender, BloodGrup, pass, Convert_ToBitmap(img), don);
                             if (insert) {
                                openSuccessDialog();
                             } else {
@@ -133,8 +133,8 @@ public class SignUpActivity extends AppCompatActivity implements AdapterView.OnI
 
         });
     }
-    // convert the image to bipmap and then use the bipmap to get roundedImage
-    private  byte[] Convert_ToBipmap(ImageView img){
+    // convert the image to bitmap and then use the bitmap to get roundedImage
+    private  byte[] Convert_ToBitmap(ImageView img){
         img.setDrawingCacheEnabled(true);
         imgProfileBitmap = img.getDrawingCache();
         roundedProfileImage = RoundedDrawable.fromBitmap(imgProfileBitmap);
